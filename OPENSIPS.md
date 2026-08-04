@@ -19,6 +19,8 @@ This wiki is dedicated to explaining OpenSIPS. (A very fast SIP proxy server).
 # Service
 
 
+***
+
 # UAS/UAC location
 
 ## Architecure
