@@ -36,6 +36,112 @@ The architecture is pretty unique since an additional OpenSIPS server needs to b
 
 ## Configuration
 
+> ####### Global Parameters #########
+
+log_level=2
+log_stderror=no
+log_facility=LOG_LOCAL0
+
+children=4
+
+/* uncomment the next line to enable the auto temporary blacklisting of 
+   not available destinations (default disabled) */
+#disable_dns_blacklist=no
+
+/* uncomment the next line to enable IPv6 lookup after IPv4 dns 
+   lookup failures (default disabled) */
+#dns_try_ipv6=yes
+
+/* comment the next line to enable the auto discovery of local aliases
+   based on revers DNS on IPs */
+auto_aliases=no
+
+server_signature=no # FFT disallow Server header
+
+#set module path
+mpath="/usr/lib/x86_64-linux-gnu/opensips/modules"
+
+loadmodule "proto_udp.so"
+
+listen=udp:172.16.5.72:5060
+
+####### Modules Section ########
+
+### Amar - Adding event modules
+#loadmodule "event.so"
+#loadmodule "event_flatstore.so"   # or kafka / rabbit / REST / etc
+
+#### SIGNALING module
+loadmodule "signaling.so"
+
+#### StateLess module
+loadmodule "sl.so"
+
+#### Transaction Module
+loadmodule "tm.so"
+modparam("tm", "fr_timeout", 12)
+modparam("tm", "fr_inv_timeout", 200)
+modparam("tm", "T1_timer", 250)
+modparam("tm", "wt_timer", 12)
+modparam("tm", "restart_fr_on_each_reply", 1)
+modparam("tm", "onreply_avp_mode", 1)
+
+#### MAX ForWarD module
+loadmodule "maxfwd.so"
+
+#### SIP MSG OPerationS module
+loadmodule "sipmsgops.so"
+
+#### FIFO Management Interface
+loadmodule "mi_fifo.so"
+modparam("mi_fifo", "fifo_name", "/var/run/opensips/opensips_fifo")
+
+#### URI module
+loadmodule "uri.so"
+modparam("uri", "use_uri_table", 0)
+
+#### USeR LOCation module
+loadmodule "usrloc.so"
+modparam("usrloc", "working_mode_preset", "single-instance-no-db")
+### Amar - Adding usrloc params
+modparam("usrloc", "timer_interval", 1) # this is used to scan DB and remove AOR entries exactly at expiry
+#modparam("usrloc", "cseq_delay", 0) # This is used to not allow refresh REGISTERs
+
+#### REGISTRAR module
+loadmodule "registrar.so"
+
+loadmodule "auth.so"
+loadmodule "textops.so"
+loadmodule "avpops.so"
+
+# Send event to subscribers
+loadmodule "event_datagram.so"
+
+####### Routing Logic ########
+
+# main request routing logic
+
+route {
+  if (is_method("OPTIONS")) {
+    if ($si == '172.16.5.72') {
+      force_rport();
+    }
+    sl_send_reply("200", "OK");
+    exit;
+  }
+  if (!is_method("REGISTER")) {
+    xlog("L_NOTICE","C5::$avp(nat)::$proto:$si:$sp::$avp(account_code)::$rm::501 Not Implemented");
+    sl_send_reply("501","Not Implemented");
+  }
+
+  # Not checking save() return code, Opensips already logs errors, main Opensips should not receive anything
+  save("location", "r"); # r flag make Opensips does not reply with 200 Ok
+  exit;
+}
+
+# vim: ts=2:sw=2
+
+
 ## Events
 
 ### REGISTRAR
