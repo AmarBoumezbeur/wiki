@@ -160,7 +160,7 @@ latency::0
 ### PROBING
 
 PROBING UAS/UAC are types of User-Agents that uses OPTION METHOD to lof their location with a SIP proxy Server.
-
+OpenSIPS 
 
 #### OPTION
 
@@ -187,6 +187,17 @@ Content-Length: 0
 
 ```
 
+#### Events
+
+* STATUS
+```
+U 2025/12/11 12:07:37.565509 127.0.0.1:37118 -> 127.0.0.1:12345
+E_DROUTING_STATUS
+partition::Default
+gwid::3373
+address::sip.pstnhub.microsoft.com:5061;transport=tls
+status::inactive
+```
 
 ## Tools
 ### Sipexer
