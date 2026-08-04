@@ -20,23 +20,6 @@ This wiki is dedicated to explaining OpenSIPS. (A very fast SIP proxy server).
 2. Cluster mode (Prod)
 
 # Configuration
-
-# Service
-
-
-***
-
-# UAS/UAC location
-
-## Architecure
-
-The architecture is pretty unique since an additional OpenSIPS server needs to be added in the environment in prder to receive REGISTER/OPTIONS messages forwarded by the OpenSIPS servers that actually receive them and reply to them woth the proper response messages.
-
-
-UAS --(REGISTER)--> Pcscf (OpenSIPS relay()) --(REGISTER)--> OpenSIPS (Event handler) 
-
-
-## Configuration
 ### PCSCF
 
 1. /etc/opensips/opensips.cfg
@@ -1107,7 +1090,24 @@ route[check_sip_dialog_trace] {
 # vim: ts=2:sw=2
 
 ```
-2. The part that relays the REGISTER to OpenSIPS (Event handler)
+# Service
+
+
+***
+
+# UAS/UAC location
+
+## Architecure
+
+The architecture is pretty unique since an additional OpenSIPS server needs to be added in the environment in prder to receive REGISTER/OPTIONS messages forwarded by the OpenSIPS servers that actually receive them and reply to them woth the proper response messages.
+
+
+UAS --(REGISTER)--> Pcscf (OpenSIPS relay()) --(REGISTER)--> OpenSIPS (Event handler) 
+
+
+## Configuration
+
+1. The part that relays the REGISTER to OpenSIPS (Event handler)
 ```
   } else if($(avp(707){s.substr,0,3}) == "REG") { # account with user/password and REGISTER
     if (is_method("REGISTER")) {
@@ -1305,7 +1305,10 @@ route[check_sip_dialog_trace] {
       exit;
     }
 ```
-
+2. The relay function sends the REGISTER to the OpenSIPS (Event Handler)
+```
+    t_relay("udp:172.16.5.72:5060", "0x02");
+```
 ### OpenSIPS (Event Handler)
 
 1. /etc/opensips/opensips.cfg
