@@ -1,5 +1,3 @@
-<TableOfContents>
-
 # Introduction
 
 This wiki is dedicated to explaining OpenSIPS. (A very fast SIP proxy server).
@@ -194,12 +192,9 @@ Content-Length: 0
 ### Sipexer
 #### REGISTER
 
-```
-sipexer -laddr :5091 -register -vl 2 -co -com -ex 60 -fuser 0990000335832 -fdomain sip-preprod.openvno.net -fv 'touser:phone' -cb -ap "initsys" -fv 'contactparams:audio;class="business, personal";duplex="full, half";mobility="fixed";description="<OmniPCX Office>";methods="ACK, INVITE, CANCEL, BYE, REFER, NOTIFY, OPTIONS, PRACK, UPDATE";extensions="100rel, timer, from-change";schemes="sip"' -xh "X-NAT: NAT." -fv 'callid:fixed-test-callid-12345@test'  udp:141.101.55.19:5060
-```
+> sipexer -laddr :5091 -register -vl 2 -co -com -ex 60 -fuser 0990000335832 -fdomain sip-preprod.openvno.net -fv 'touser:phone' -cb -ap "initsys" -fv 'contactparams:audio;class="business, personal";duplex="full, half";mobility="fixed";description="<OmniPCX Office>";methods="ACK, INVITE, CANCEL, BYE, REFER, NOTIFY, OPTIONS, PRACK, UPDATE";extensions="100rel, timer, from-change";schemes="sip"' -xh "X-NAT: NAT." -fv 'callid:fixed-test-callid-12345@test'  udp:141.101.55.19:5060
+
 
 #### OPTIONS
 
-```
-sipexer -laddr :5091 -vl 2 -co -com   -fuser 0990000335832 -fdomain sip-preprod.openvno.net   -ap "initsys"   -xh "X-NAT: NAT."   -fv 'callid:fixed-test-callid-12345@test'   udp:141.101.55.19:5060
-```
+> sipexer -laddr :5091 -vl 2 -co -com   -fuser 0990000335832 -fdomain sip-preprod.openvno.net   -ap "initsys"   -xh "X-NAT: NAT."   -fv 'callid:fixed-test-callid-12345@test'   udp:141.101.55.19:5060
