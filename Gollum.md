@@ -94,3 +94,24 @@ sudo systemctl status gollum.service
 ```
 http://0.0.0.0:4567:/gollum/wiki/Home
 ```
+6. Check service status
+```
+sudo systemctl status gollum
+● gollum.service - Gollum wiki server
+     Loaded: loaded (/etc/systemd/system/gollum.service; enabled; vendor preset: enabled)
+     Active: active (running) since Tue 2026-08-04 13:59:55 CEST; 46s ago
+   Main PID: 76522 (gollum)
+      Tasks: 1 (limit: 18507)
+     Memory: 79.4M
+        CPU: 4.015s
+     CGroup: /system.slice/gollum.service
+             └─76522 /usr/bin/ruby3.0 -Eutf-8 /usr/local/bin/gollum --host 0.0.0.0 --port 4567 --allow-uploads dir --css
+
+août 04 13:59:55 aboumezbeur-XPS-15-9500 systemd[1]: Started Gollum wiki server.
+août 04 13:59:59 aboumezbeur-XPS-15-9500 gollum[76522]: [2026-08-04 13:59:59] INFO  WEBrick 1.7.0
+août 04 13:59:59 aboumezbeur-XPS-15-9500 gollum[76522]: [2026-08-04 13:59:59] INFO  ruby 3.0.2 (2021-07-07) [x86_64-linux-gnu]
+août 04 13:59:59 aboumezbeur-XPS-15-9500 gollum[76522]: == Sinatra (v4.2.1) has taken the stage on 4567 for production with backup from WEBrick
+août 04 13:59:59 aboumezbeur-XPS-15-9500 gollum[76522]: [2026-08-04 13:59:59] INFO  Rackup::Handler::WEBrick::Server#start: pid=76522 port=4567
+août 04 14:00:28 aboumezbeur-XPS-15-9500 systemd[1]: gollum.service: Current command vanished from the unit file, execution of the command list won't be resumed.
+
+```
