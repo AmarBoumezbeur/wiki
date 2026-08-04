@@ -1,8 +1,12 @@
 # SSH
 ## Generate SSH keys
 
-1. ED25519: ssh-keygen -t ed25519 -C "your_email@example.com"
-2. RSA: ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+1. ED25519: 
+`ssh-keygen -t ed25519 -C "your_email@example.com"
+`
+2. RSA: 
+`ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+`
 
 ## Permissions
 
