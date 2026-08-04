@@ -156,9 +156,11 @@ cseq::2147431040
 attr::
 latency::0
 ```
+
 ### PROBING
 
 PROBING UAS/UAC are types of User-Agents that uses OPTION METHOD to lof their location with a SIP proxy Server.
+
 
 #### OPTION
 
