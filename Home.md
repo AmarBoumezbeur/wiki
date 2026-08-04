@@ -25,34 +25,35 @@ Ce seveur est privé et il est dédié au summary de tout ce que j'ai appris pen
       * Ruby on rails [Rails](http://0.0.0.0:4567/gollum/create/Rails)
     * Versioning
       * [Version-Format](http://0.0.0.0:4567/gollum/create/Verion-Format)
-    * Linux
-        * Debian
+3. Linux
+    * Debian
         * Releases [Releases](http://0.0.0.0:4567/gollum/create/Releases)
         * Services [Services](http://0.0.0.0:4567/gollum/create/Services)
         * Repositories [Repositories](http://0.0.0.0:4567/gollum/create/Repositories)
         * Building packages [Packages](http://0.0.0.0:4567/gollum/create/Packages)
+4. APIs 
     * Messaging
         * Provisoning
         * Synchronous 
             * [APIs](http://0.0.0.0:4567/gollum/create/APIs)
         * Asynchronous
             * [Activemq](http://0.0.0.0:4567/gollum/create/Activemq)
-    *VoIP
-        * Tools
-            * [SipP](http://0.0.0.0:4567/gollum/create/SipP) 
-            * [Sipexer](http://0.0.0.0:4567/gollum/create/Sipexer) 
-        * IMS
-            * MRF
-                * [ASTERISK](http://0.0.0.0:4567/gollum/create/ASTERISK)
-                * [FREESWTCH](http://0.0.0.0:4567/gollum/create/FREESWTCH)
-            * PCSCF
-                * [OPENSIPS](http://0.0.0.0:4567/gollum/create/OPENSIPS)
-                * [RTPENGINE](http://0.0.0.0:4567/gollum/create/RTPENGINE)
-                * [NAT](http://0.0.0.0:4567/gollum/create/NAT)
-            * SCSCF
-            * ICSCF
-            * [HSS](http://0.0.0.0:4567/gollum/create/HSS)
-            * 
+5. VoIP
+    * Tools
+        * [SipP](http://0.0.0.0:4567/gollum/create/SipP) 
+        * [Sipexer](http://0.0.0.0:4567/gollum/create/Sipexer) 
+    * IMS
+        * MRF
+            * [ASTERISK](http://0.0.0.0:4567/gollum/create/ASTERISK)
+            * [FREESWTCH](http://0.0.0.0:4567/gollum/create/FREESWTCH)
+        * PCSCF
+            * [OPENSIPS](http://0.0.0.0:4567/gollum/create/OPENSIPS)
+            * [RTPENGINE](http://0.0.0.0:4567/gollum/create/RTPENGINE)
+            * [NAT](http://0.0.0.0:4567/gollum/create/NAT)
+        * SCSCF
+        * ICSCF
+        * [HSS](http://0.0.0.0:4567/gollum/create/HSS)
+        * 
 3. PProd
     * 
 4. Prod
