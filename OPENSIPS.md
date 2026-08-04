@@ -36,7 +36,8 @@ The architecture is pretty unique since an additional OpenSIPS server needs to b
 
 ## Configuration
 
-> ####### Global Parameters #########
+```
+####### Global Parameters #########
 
 log_level=2
 log_stderror=no
@@ -140,7 +141,7 @@ route {
 }
 
 # vim: ts=2:sw=2
-
+```
 
 ## Events
 
