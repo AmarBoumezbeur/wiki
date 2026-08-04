@@ -4,8 +4,6 @@ Ce seveur est privé et il est dédié au summary de tout ce que j'ai appris pen
 
 ## Projects
 
-
-
 ## How tos!
 
 1. Wiki 
