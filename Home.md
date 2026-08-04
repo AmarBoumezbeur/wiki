@@ -5,5 +5,5 @@ Ce seveur est privé et il est dédié au summary de tout ce que j'ai appris pen
 
 ## How tos!
 
-1. [Gollum](http://0.0.0.0:4567/gollum/create/Gollum)
+1. Installation du seveur documentation [Gollum](http://0.0.0.0:4567/gollum/create/Gollum)
 
