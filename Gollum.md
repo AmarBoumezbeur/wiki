@@ -91,7 +91,7 @@ sudo systemctl start gollum.service
 sudo systemctl status gollum.service
 ```
 5. Launch 
-[http://0.0.0.0:4567:/Home](http://0.0.0.0:4567:/gollum/wiki/Home)
+[http://0.0.0.0:4567:/Home](http://0.0.0.0:4567:/Home)
 6. Check service status
 ```
 sudo systemctl status gollum
