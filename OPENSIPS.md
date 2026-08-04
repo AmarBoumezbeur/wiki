@@ -19,19 +19,92 @@ This wiki is dedicated to explaining OpenSIPS. (A very fast SIP proxy server).
 # Service
 
 
-# Events
-## REGISTRAR
+# UAS/UAC location
 
-Afin de connaître l'état d'enregistrement des UAS/UAC :
-OpenSips genére des events losque un REGISTER a été traité et une entrée dans la table location (HSS) a été créée.
-Un event est genéré et est capturé par l'application afin de calculer l'état du UAS/UAC.
-    
-    * Cet état correspond à l'enregistrement ou le non enregistrement, pas à la réception des messages d'enregistrement (REGISTER).
-    * Chaque UAS/UAC peut être enregistré plusieurs fois simultanément (jusqu'à 5 fois en théorie), chaque équipement a un état d'enregistrement différent et est différencié des autres par son User-Agent.
+## Architecure
 
-On ajoute aussi Contact aux informations de l'équipement, peut aider à différentier plusieurs équipements similaires, notamment avec l'adresse IP, ce champs est affiché tel que reçu.
+## Configuration
 
-### Events 
+## Events
+
+### REGISTRAR
+
+REGISTRAR UAS/UAC is a type of of User-Agents that uses REGISTER method to log its location with a SIP Proxy server.
+
+In order to keep track of UAS/UAC location, OpenSIPS uses a mecanism to log the location of each REGISTER in it's DB/cache/memory. The mecanism is based on events. An event is triggered when an entry in the table location is detected.
+The events are stored in OpenSIPS DB as AOR.
+```
+AOR:: UAS1
+        Contact:: sip:UAS1@10.1.1.1;transport=UDP;user=phone Q=
+                ContactID:: 564779540772033556
+                Expires:: 21
+                Callid:: d3d5c9fab3fc13ad0d0c3c5938efb340@10.1.1.1
+                Cseq:: 2146524753
+                User-agent:: OXO052/035.001 GW_052/035.001
+                State:: CS_NEW
+                Flags:: 0
+                Cflags::
+                Socket:: udp:169.254.74.51:5060
+                Methods:: 7279
+```
+
+#### REGISTER
+
+When a REGISTER is recceived by OpenSIPS, it is challenged with 401/Unauthorized or 407/Proxy Authentication Required, the UAS sends a new REGISTER with Authorization header and this time if the UAS is authorized a 200 OK response is sent as response.
+
+```
+REGISTER sip:141.101.55.19:5060 SIP/2.0
+Via: SIP/2.0/UDP 192.168.99.20:5091;rport;branch=z9hG4bKSG.JNlswMLATPGbKLBc99BEEow
+From: <sip:0990000335832@sip-preprod.openvno.net>;tag=60ea7afb-4655-4d9f-951a-8f0452e27817
+To: <sip:0990000335832@sip-preprod.openvno.net>
+Call-ID: fixed-test-callid-12345@test
+CSeq: 750121 REGISTER
+Date: Tue, 04 Aug 2026 15:28:54 CEST
+Contact: <sip:192.168.99.20:5091;transport=udp>;audio;class="business, personal";duplex="full, half";mobility="fixed";description="<OmniPCX Office>";methods="ACK, INVITE, CANCEL, BYE, REFER, NOTIFY, OPTIONS, PRACK, UPDATE";extensions="100rel, timer, from-change";schemes="sip"
+Expires: 60
+User-Agent: SIPExer v2.0.0
+Max-Forwards: 10
+Content-Length: 0
+X-NAT: NAT.
+
+SIP/2.0 401 Unauthorized
+Via: SIP/2.0/UDP 192.168.99.20:5091;received=217.15.84.94;rport=5091;branch=z9hG4bKSG.JNlswMLATPGbKLBc99BEEow
+From: <sip:0990000335832@sip-preprod.openvno.net>;tag=60ea7afb-4655-4d9f-951a-8f0452e27817
+To: <sip:0990000335832@sip-preprod.openvno.net>;tag=124e.0808d8ce1c30ee5f7ed80f6ff7bb8e37
+Call-ID: fixed-test-callid-12345@test
+CSeq: 750121 REGISTER
+WWW-Authenticate: Digest realm="sip-preprod.openvno.net", nonce="6a71e93400000c51fe89aa585bf0d67f3b20d640c749785d"
+Content-Length: 0
+
+REGISTER sip:141.101.55.19:5060 SIP/2.0
+Via: SIP/2.0/UDP 192.168.99.20:5091;rport;branch=z9hG4bKSG.e370845f-8a84-443e-9f9a-79e252ce225b
+From: <sip:0990000335832@sip-preprod.openvno.net>;tag=60ea7afb-4655-4d9f-951a-8f0452e27817
+To: <sip:0990000335832@sip-preprod.openvno.net>
+Call-ID: fixed-test-callid-12345@test
+CSeq: 750122 REGISTER
+Date: Tue, 04 Aug 2026 15:28:54 CEST
+Contact: <sip:192.168.99.20:5091;transport=udp>;audio;class="business, personal";duplex="full, half";mobility="fixed";description="<OmniPCX Office>";methods="ACK, INVITE, CANCEL, BYE, REFER, NOTIFY, OPTIONS, PRACK, UPDATE";extensions="100rel, timer, from-change";schemes="sip"
+Expires: 60
+User-Agent: SIPExer v2.0.0
+Max-Forwards: 10
+Content-Length: 0
+X-NAT: NAT.
+Authorization: Digest username="0990000335832", realm="sip-preprod.openvno.net", nonce="6a71e93400000c51fe89aa585bf0d67f3b20d640c749785d", uri="sip:141.101.55.19:5060", algorithm=MD5, response="eb12e194e0a4cddd457500f1085ad75a"
+
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP 192.168.99.20:5091;received=217.15.84.94;rport=5091;branch=z9hG4bKSG.e370845f-8a84-443e-9f9a-79e252ce225b
+From: <sip:0990000335832@sip-preprod.openvno.net>;tag=60ea7afb-4655-4d9f-951a-8f0452e27817
+To: <sip:0990000335832@sip-preprod.openvno.net>;tag=6818-49340d08fcc0f1405a89609167823507
+Call-ID: fixed-test-callid-12345@test
+CSeq: 750122 REGISTER
+Contact: <sip:192.168.99.20:5091;transport=udp>;expires=60;received="sip:217.15.84.94:5091"
+Content-Length: 0
+```
+
+#### Events 
+
+Events are three types: 
+
 1. INSERT
 ```
 U 2025/11/27 10:36:44.636474 127.0.0.1:56349 -> 127.0.0.1:12345
@@ -83,45 +156,46 @@ cseq::2147431040
 attr::
 latency::0
 ```
+### PROBING
 
-### REGISTER
+PROBING UAS/UAC are types of User-Agents that uses OPTION METHOD to lof their location with a SIP proxy Server.
+
+#### OPTION
 
 ```
-U 2026/07/31 10:51:37.315368 217.15.95.98:5060 -> 169.254.74.51:5060
-REGISTER sip:sip3.openvno.net:5060 SIP/2.0.
-Via: SIP/2.0/UDP 217.15.95.98:5060;branch=z9hG4bKbe63.e74cfa44.0.
-Via: SIP/2.0/UDP 141.95.161.166:5060;received=141.95.161.166;branch=z9hG4bK-524287-1---e9072a7a0738f134;rport=5060.
-Max-Forwards: 69.
-Contact: <sip:0990000415870@141.95.161.166:5060;rinstance=3af294ec9401e21f>.
-To: <sip:0990000415870@sip3.openvno.net:5060>.
-From: <sip:0990000415870@sip3.openvno.net:5060>;tag=93f19e16.
-Call-ID: UOkD5E5R0354For8iu8vLA...
-CSeq: 1254 REGISTER.
-Expires: 120.
-Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REGISTER, SUBSCRIBE, NOTIFY, REFER, INFO, MESSAGE, UPDATE.
-Supported: replaces, timer.
-User-Agent: 3CXPhoneSystem 20.0.9.995 (995).
-Authorization: Digest username="0990000415870",realm="sip3.openvno.net",nonce="6a6c6237000158b8f8f74aa0a366ec9cdb71cdc5b47ad529",uri="sip:sip3.openvno.net:5060",response="a2eb3a5abf49d554a41c6129b41ec7d2",algori
-thm=MD5.
-Content-Length: 0.
-X-NAT: .
+OPTIONS sip:141.101.55.19:5060 SIP/2.0
+Via: SIP/2.0/UDP 192.168.99.20:5091;rport;branch=z9hG4bKSG.WS90vkc7uTSus7wvfLgW0EQ
+From: <sip:0990000335832@sip-preprod.openvno.net>;tag=516aa4bb-b7d2-456a-91e2-b6d817899261
+To: <sip:bob@localhost>
+Call-ID: fixed-test-callid-12345@test
+CSeq: 396727 OPTIONS
+Date: Tue, 04 Aug 2026 15:34:00 CEST
+User-Agent: SIPExer v2.0.0
+Max-Forwards: 10
+Content-Length: 0
+X-NAT: NAT.
+
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP 192.168.99.20:5091;received=217.15.84.94;rport=5091;branch=z9hG4bKSG.WS90vkc7uTSus7wvfLgW0EQ
+From: <sip:0990000335832@sip-preprod.openvno.net>;tag=516aa4bb-b7d2-456a-91e2-b6d817899261
+To: <sip:bob@localhost>;tag=124e.621cb9786b251e3fa76e8b072389bad6
+Call-ID: fixed-test-callid-12345@test
+CSeq: 396727 OPTIONS
+Content-Length: 0
+
 ```
 
-### DATA
 
-* Data
-* User Agent
-* Contact
-* NAT: détecté ou non
-* Date d'évènement
-* Date prévue d'expiration
-* État UP ou DOWN
-* Call-ID
-* Received (ip et port de l'équipement) (vide si REGISTER tranféré, doit être consolidé en base de donnée pour les UP et null sinon).
-* Protocol (ajout du 28/02/2019),
+## Tools
+### Sipexer
+#### REGISTER
 
-FYI: username et contact forment une contrainte d'unicité pour un équipement.
-FYI: username, contact et callid forment une contrainte d'unicité pour un enregistrement donné (normalement domain fait aussi partie de la contrainte mais n'est pas présent).
+```
+sipexer -laddr :5091 -register -vl 2 -co -com -ex 60 -fuser 0990000335832 -fdomain sip-preprod.openvno.net -fv 'touser:phone' -cb -ap "initsys" -fv 'contactparams:audio;class="business, personal";duplex="full, half";mobility="fixed";description="<OmniPCX Office>";methods="ACK, INVITE, CANCEL, BYE, REFER, NOTIFY, OPTIONS, PRACK, UPDATE";extensions="100rel, timer, from-change";schemes="sip"' -xh "X-NAT: NAT." -fv 'callid:fixed-test-callid-12345@test'  udp:141.101.55.19:5060
+```
 
-Les données sont oubliées une fois envoyées
-## PROBING
+#### OPTIONS
+
+```
+sipexer -laddr :5091 -vl 2 -co -com   -fuser 0990000335832 -fdomain sip-preprod.openvno.net   -ap "initsys"   -xh "X-NAT: NAT."   -fv 'callid:fixed-test-callid-12345@test'   udp:141.101.55.19:5060
+```
