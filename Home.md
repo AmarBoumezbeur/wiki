@@ -8,21 +8,8 @@ Ce seveur est privé et il est dédié au summary de tout ce que j'ai appris pen
 
 1. Wiki 
     * Installation du seveur documentation [Gollum](http://0.0.0.0:4567/gollum/create/Gollum)
-2. Devs
-    * Languages
-      * [Java](http://0.0.0.0:4567/gollum/create/Java)
-        * [Jmxterm](http://0.0.0.0:4567/gollum/create/Jmxterm)
-      * [Ruby](http://0.0.0.0:4567/gollum/create/Ruby)
-      * [Bash](http://0.0.0.0:4567/gollum/create/Bash)
-        * Scripting
-            * [Linephonecsh](http://0.0.0.0:4567/gollum/create/Linephonecsh)
-      * [Postgresql](http://0.0.0.0:4567/gollum/create/Postgresql)
-      * [Protobuff](http://0.0.0.0:4567/gollum/create/Protobuff)
-    * Frameworks
-      * Spring-Boot [Spring](http://0.0.0.0:4567/gollum/create/Spring)
-      * Ruby on rails [Rails](http://0.0.0.0:4567/gollum/create/Rails)
-    * Versioning
-      * [Version-Format](http://0.0.0.0:4567/gollum/create/Verion-Format)
+2. Basics
+    * [Stuff](http://0.0.0.0:4567/gollum/create/Stuff)
 3. Linux
     * Debian
         * Releases [Releases](http://0.0.0.0:4567/gollum/create/Releases)
@@ -53,8 +40,23 @@ Ce seveur est privé et il est dédié au summary de tout ce que j'ai appris pen
         * SCSCF
         * ICSCF
         * [HSS](http://0.0.0.0:4567/gollum/create/HSS)
-        * 
-3. PProd
+        *
+6. Devs
+    * Languages
+      * [Java](http://0.0.0.0:4567/gollum/create/Java)
+        * [Jmxterm](http://0.0.0.0:4567/gollum/create/Jmxterm)
+      * [Ruby](http://0.0.0.0:4567/gollum/create/Ruby)
+      * [Bash](http://0.0.0.0:4567/gollum/create/Bash)
+        * Scripting
+            * [Linephonecsh](http://0.0.0.0:4567/gollum/create/Linephonecsh)
+      * [Postgresql](http://0.0.0.0:4567/gollum/create/Postgresql)
+      * [Protobuff](http://0.0.0.0:4567/gollum/create/Protobuff)
+    * Frameworks
+      * Spring-Boot [Spring](http://0.0.0.0:4567/gollum/create/Spring)
+      * Ruby on rails [Rails](http://0.0.0.0:4567/gollum/create/Rails)
+    * Versioning
+      * [Version-Format](http://0.0.0.0:4567/gollum/create/Verion-Format)
+7. PProd
     * 
-4. Prod
+8. Prod
     * 
