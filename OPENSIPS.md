@@ -1107,6 +1107,205 @@ route[check_sip_dialog_trace] {
 # vim: ts=2:sw=2
 
 ```
+2. The part that relays the REGISTER to OpenSIPS (Event handler)
+```
+  } else if($(avp(707){s.substr,0,3}) == "REG") { # account with user/password and REGISTER
+    if (is_method("REGISTER")) {
+      # authenticate the REGISTER requests (uncomment to enable auth)
+      if(!search("^Contact:[ ]*\*") && isbflagset(6)) {
+         xlog("L_INFO","C5 : NAT detected\n");
+         fix_nated_register();
+      }
+
+      if ($aU == null) {
+        www_challenge("sip-preprod.openvno.net", "0");
+        exit;
+      }
+
+      $avp(account_code) = $(aU{s.select,0,@});
+
+      if ($avp(account_code) == $aU) {
+        cache_fetch("local","ha1_$avp(account_code)",$avp(password));
+        if ($avp(password) == null || $avp(password) == "<null>") {
+          www_authorize("sip-preprod.openvno.net", "subscriber");
+          $var(auth_rc)=$rc;
+          $avp(password) = $avp(ha1);
+          cache_store("local","ha1_$avp(account_code)","$avp(password)",3600);
+        } else {
+          $avp(username)=$aU;
+          pv_www_authorize("sip-preprod.openvno.net");
+          $var(auth_rc)=$rc;
+        }
+      } else {
+        xlog("L_INFO","C5::$avp(nat)::$proto:$si:$sp::$avp(account_code)::$rm::UAC using user@domain in authorization\n");
+        cache_fetch("local","ha1b_$avp(account_code)",$avp(password));
+        if ($avp(password) == null || $avp(password) == "<null>") {
+          www_authorize("sip-preprod.openvno.net", "subscriber");
+          $var(auth_rc)=$rc;
+          $avp(password) = $avp(ha1b);
+          cache_store("local","ha1b_$avp(account_code)","$avp(password)",3600);
+        } else {
+          $avp(username)=$aU;
+          pv_www_authorize("sip-preprod.openvno.net");
+          $var(auth_rc)=$rc;
+        }
+      }
+      if ($var(auth_rc) < 0) {
+        switch($var(auth_rc)) {
+            case -1:
+                xlog("L_NOTICE","C5::$avp(nat)::$proto:$si:$sp::$Au::$rm::403::Invalid User\n");
+                sl_send_reply("403","Authentication failure");
+                exit;
+            break;
+            case -2:
+                xlog("L_NOTICE","C5::$avp(nat)::$proto:$si:$sp::$Au::$rm::403::Invalid Password\n");
+                sl_send_reply("403","Authentication failure");
+                exit;
+            break;
+            case -3:
+                xlog("L_INFO","C5::$avp(nat)::$proto:$si:$sp::$Au::$rm::401::Stale Nonce\n");
+            break;
+            case -4:
+                xlog("L_NOTICE","C5::$avp(nat)::$proto:$si:$sp::$Au::$rm::401::No Credentials\n");
+            break;
+            case -5:
+                xlog("L_NOTICE","C5::$avp(nat)::$proto:$si:$sp::$Au::$rm::500::Generic Error\n");
+                sl_send_reply("500","Internal server Error");
+                exit;
+            break;
+            default:
+               xlog("L_NOTICE","C5::$avp(nat)::$proto:$si:$sp::$Au::$rm::403::Return Code ($rc)\n");
+                sl_send_reply("500","Internal server Error");
+        }
+        www_challenge("sip-preprod.openvno.net", "0");
+        exit;
+      }
+
+      if (!db_check_from()) {
+        xlog("L_NOTICE","C5::$avp(nat)::$proto:$si:$sp::$avp(account_code)::$rm::403::UserID and AuthenticateID mismatch\n");
+        sl_send_reply("403","Forbidden : Authentication failure");
+        exit;
+      }
+      
+      append_hf("X-NAT: $avp(nat)\r\n");
+      # 0x02 - do not internally generate and send a "477 Send failed (477/TM)" SIP reply in case of a global forwarding failure (i.e. forwarding for each branch has failed due to internal errors, bad R-URI, bad message, lack of network reachability, etc.). 
+      t_relay("udp:172.16.5.72:5060", "0x02");
+      
+      if ($proto == "tcp" || $proto == "tls") {
+        setflag(TCP_PERSIST_DURATION);
+      }
+      if (!save("location")) {
+        switch($rc) {
+        case -2:
+          xlog("L_NOTICE","C5::$avp(nat)::$proto:$si:$sp::$avp(account_code)::$rm::503 (Too many registrations)\n");
+          exit;
+        default:
+          sl_reply_error(); #a revoir
+          exit;
+        }
+      }
+      xlog("L_NOTICE","C5::$avp(nat)::$proto:$si:$sp::$avp(account_code)::$rm::200\n");
+      exit;
+    } else if(is_method("INVITE")) {
+      if ($aU == null) {
+        proxy_challenge("sip-preprod.openvno.net", "0");
+        exit;
+      }
+
+      $avp(account_code) = $(aU{s.select,0,@});
+
+      if ($avp(account_code) == $aU) {
+        cache_fetch("local","ha1_$avp(account_code)",$avp(password));
+        if ($avp(password) == null || $avp(password) == "<null>") {
+          proxy_authorize("sip-preprod.openvno.net", "subscriber");
+          $var(auth_rc)=$rc;
+          $avp(password) = $avp(ha1);
+          cache_store("local","ha1_$avp(account_code)","$avp(password)",3600);
+        } else {
+          $avp(username)=$aU;
+          pv_proxy_authorize("sip-preprod.openvno.net");
+          $var(auth_rc)=$rc;
+        }
+      } else {
+        xlog("L_INFO","C5::$avp(nat)::$proto:$si:$sp::$avp(account_code)::$rm::UAC using user@domain in authorization\n");
+        cache_fetch("local","ha1b_$avp(account_code)",$avp(password));
+        if ($avp(password) == null || $avp(password) == "<null>") {
+          proxy_authorize("sip-preprod.openvno.net", "subscriber");
+          $var(auth_rc)=$rc;
+          $avp(password) = $avp(ha1b);
+          cache_store("local","ha1b_$avp(account_code)","$avp(password)",3600);
+        } else {
+          $avp(username)=$aU;
+          pv_proxy_authorize("sip-preprod.openvno.net");
+          $var(auth_rc)=$rc;
+        }
+      }
+      if ($var(auth_rc) < 0) {
+        switch($var(auth_rc)) {
+            case -1:
+                xlog("L_NOTICE","C5::$avp(nat)::$proto:$si:$sp::$Au::$rm::403::$ru::Invalid User\n");
+                sl_send_reply("403","Proxy authentication failure");
+                exit;
+            break;
+            case -2:
+                xlog("L_NOTICE","C5::$avp(nat)::$proto:$si:$sp::$Au::$rm::403::$ru::Invalid Password\n");
+                sl_send_reply("403","Proxy authentication failure");
+                exit;
+            break;
+            case -3:
+                xlog("L_INFO","C5::$avp(nat)::$proto:$si:$sp::$Au::$rm::407::$ru::Proxy stale Nonce\n");
+            break;
+            case -4:
+                xlog("L_NOTICE","C5::$avp(nat)::$proto:$si:$sp::$Au::$rm::407::$ru::Proxy No Credentials\n");
+            break;
+            case -5:
+                xlog("L_NOTICE","C5::$avp(nat)::$proto:$si:$sp::$Au::$rm::500::$ru::Proxy Generic Error\n");
+                sl_send_reply("500","Internal server Error");
+                exit;
+            break;
+            default:
+                xlog("L_NOTICE","C5::$avp(nat)::$proto:$si:$sp::$Au::$rm::500::$ru::INVITE - Return Code ($rc)\n");
+                sl_send_reply("500","Internal server Error");
+                exit;
+        }
+        proxy_challenge("sip-preprod.openvno.net", "0");
+        exit;
+      }
+
+      route(update_account_parameters);
+      if (!rl_check("$avp(account_code)", "$(avp(max_rate){s.int})", "TAILDROP")) {
+        xlog("L_WARNING","C5::$avp(nat)::$proto:$si:$sp::$avp(account_code)::$rm::480::$ru::CPS Limit Exceeded (limit is $avp(max_rate))\n");
+        sl_send_reply("480", "CPS Limit Exceeded");
+        exit;
+      }
+      if ($fu =~ "^tel:") { # URI is between <>, no need to check name
+        uac_replace_from("sip:$fU@sip.openvno.net");
+      }
+
+      consume_credentials();
+      remove_hf("X-AccountCode");
+      remove_hf("X-CarrierCode");
+      append_hf("X-AccountCode: $avp(account_code)\r\n");
+
+      subst_uri('/;transport=[a-z]*//i'); # using dr_gateways set in dr_gateways
+
+      if (do_routing("$(avp(group_id){s.int})", "W")) {
+
+        xlog("L_INFO", "calling do_routing() REG Section\n") ;
+        route(add_session_id);
+        route(1);
+        exit;
+      }
+      xlog("L_WARNING","C5::$avp(nat)::$proto:$si:$sp::$avp(account_code)::$rm::503::Service Unavailable routing with DR: went wrong\n");
+      sl_send_reply("503","Service Unavailable");
+      exit;
+    } else if (is_method("OPTIONS")) {
+      # TODO : gestion du nat
+      sl_send_reply("200", "OK");
+      exit;
+    }
+```
+
 ### OpenSIPS (Event Handler)
 
 1. /etc/opensips/opensips.cfg
