@@ -10,8 +10,9 @@
 
 ## Permissions
 
-chmod 600 ~/.ssh/id_ed25519
+`chmod 600 ~/.ssh/id_ed25519
 chmod 644 ~/.ssh/id_ed25519.pub
+`
 
 Copy the SSH publique key to the remote server.
 
