@@ -32,7 +32,8 @@ git config --global core.editor nano
 
 git config --global pull.rebase false      # merge on pull (default, explicit is clearer)
 git config --global color.ui auto          # colored output
-git config --global core.autocrlf input    # line-ending handling (Linux/Mac)`
+git config --global core.autocrlf input    # line-ending handling (Linux/Mac)
+`
 
 ## Check configuration
 
@@ -40,7 +41,8 @@ git config --global core.autocrlf input    # line-ending handling (Linux/Mac)`
 # List configuration
 git config --list
 # or just for global scope:
-git config --list --global`
+git config --list --global
+`
 
 ## Edit configuration
 
