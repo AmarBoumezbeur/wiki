@@ -9,6 +9,11 @@ This wiki is dedicated to explaining OpenSIPS. (A very fast SIP proxy server).
 3. [OpenSIPS Github](https://github.com/OpenSIPS/OpenSIPS)
 4. [Build OpenSIPS](http://0.0.0.0:4567/gollum/create/Build-OpenSIPS)
 
+
+***
+# PCSCF
+
+
 # Architecture
 
 1. Single node mode (Dev only)
@@ -24,6 +29,10 @@ This wiki is dedicated to explaining OpenSIPS. (A very fast SIP proxy server).
 # UAS/UAC location
 
 ## Architecure
+
+The architecture is pretty unique since an additional OpenSIPS server needs to be added in the environment in prder to receive REGISTER/OPTIONS messages forwarded by the OpenSIPS servers that actually receive them and reply to them woth the proper response messages.
+
+
 
 ## Configuration
 
