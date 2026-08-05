@@ -16,16 +16,44 @@ sudo truncate -s 0 /var/log/syslog
 2. Si elle est configurée il faut la supprimer pour que le script peut la virer
 3. Une fois l'IP supprimer ou si elle est déja supprimée, il faut la bloquer en exécutant le script.
 4. Le script
-```
-configuration/tools/ban_ip_openvno.rb
-```
+    ```
+    configuration/tools/ban_ip_openvno.rb
+    ```
+    * Syntax
+    ```
+    ruby ban_ip_openvno.rb <<ACTION>> <<IP-ADDRESS>>
+    ```
+Where :
 
+<<ACTION>> can be add or del
+
+add = means you would like to add the ip address in the blocked list (so you block traffic coming from this ip address at ip level)
+
+del = means you would like to remove the ip address from the blocked list (so you unblock traffic comming from this ip address at ip level)
+
+<<IP-ADDRESS>> is the ip address to be blocked or unblocked
+
+You must specify 1 ip address.
+In theory, you can specifiy many ip addresses separated by space (never tested)
 5. Utilisation
     * Exemple d'IP a bloquée:
     ```
     212.46.52.231
     ```
+    * Exécution
+    ```
+    ruby ban_ip_openvno.rb del 212.46.52.231
+    ```
+6. Vérification si le ban a fonctionné
+```
+### Checking an IP that is not in the list:
+ipset test offenders 212.46.52.231
+  >> 212.46.52.231 is NOT in set offenders.
 
+### Checking an IP that is in the list:
+ipset test offenders 212.46.52.231
+  >> 212.46.52.231 is in set offenders.
+```
 ## SSH
 
 ### Generate SSH keys
