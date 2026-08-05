@@ -42,7 +42,7 @@ In theory, you can specifiy many ip addresses separated by space (never tested)
 ```
     * Exécution
 ```
-ruby ban_ip_openvno.rb del 212.46.52.231
+ruby ban_ip_openvno.rb add 212.46.52.231
 ```
 6. Vérification si le ban a fonctionné
 ```
