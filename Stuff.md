@@ -37,13 +37,13 @@ You must specify 1 ip address.
 In theory, you can specifiy many ip addresses separated by space (never tested)
 5. Utilisation
     * Exemple d'IP a bloquée:
-    ```
-    212.46.52.231
-    ```
+```
+212.46.52.231
+```
     * Exécution
-    ```
-    ruby ban_ip_openvno.rb del 212.46.52.231
-    ```
+```
+ruby ban_ip_openvno.rb del 212.46.52.231
+```
 6. Vérification si le ban a fonctionné
 ```
 ### Checking an IP that is not in the list:
