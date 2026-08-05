@@ -12,12 +12,14 @@ sudo truncate -s 0 /var/log/syslog
 ```
 0990000424864
 ```
+
 2. Si elle est configurée il faut la supprimer pour que le script peut la virer
 3. Une fois l'IP supprimer ou si elle est déja supprimée, il faut la bloquer en exécutant le script.
 4. Le script
 ```
 configuration/tools/ban_ip_openvno.rb
 ```
+
 5. Utilisation
     * Exemple d'IP a bloquée:
     ```
