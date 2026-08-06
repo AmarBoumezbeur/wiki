@@ -7,7 +7,8 @@
 ps aux | grep sender
 ```
 2. Kill a Proc
-kill -9 <pid>```
+```
+kill -9 <pid>
 
 ```
 
