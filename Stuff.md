@@ -1,5 +1,23 @@
 # Miscellaneous
 
+## Proc
+
+1. Search for a Proc
+```
+ps aux | grep sender
+```
+2. Kill a Proc
+kill -9 <pid>```
+
+```
+
+## TCP/UDP
+
+1. Look for open ports:
+```
+sudo ss -tlnp | grep :9050
+```
+
 ## SCP
 
 1. AMQ-Producer:
