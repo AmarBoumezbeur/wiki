@@ -11,8 +11,5 @@ exec 3>&-
 ```
 3. Listen for a message
 ```
-    while IFS= read -r line; do
-    
-    done
+IFS= read -r line
 ```
-
