@@ -1,5 +1,12 @@
 # Miscellaneous
 
+## SCP
+
+1. Send amq-producer to 10.44.81.177
+```
+scp producer/target/producer-2.0.0.jar root@10.44.81.177:/usr/share/amq-producer/producer.jar
+```
+
 ## Empty /var/log/ (safe)
 
 ```
