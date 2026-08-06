@@ -7,12 +7,15 @@ sudo truncate -s 0 /var/log/syslog
 ```
 
 ## Screen
+
 1. MRF
   * Dump screen
 ```
+TODO
 ```
 
 ## STOMP
+
 1. Sniff activemq STOMP messages:
 ```
 ngrep -qtpWbyline -d ens3 mrf host @IP & ngrep -qtpWbyline -d ens3 status host @IP
@@ -25,6 +28,7 @@ ngrep -qtpWbyline -d ens3 mrf host 10.44.81.209 & ngrep -qtpWbyline -d ens3 stat
 ```
 ngrep -qtpWbyline -d ens4 '^\s*(CONNECTED|MESSAGE|RELOAD|SUSCRIBE|mrf|status).*' host 10.44.81.252
 ```
+
 ## Blocaque IP
 
 1. Il faut vérifier d'abord si l'IP est configurée sur l'extranet pour le compte en question
