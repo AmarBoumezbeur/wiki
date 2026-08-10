@@ -30,6 +30,10 @@ mvn clean install
 ```
 scp producer/target/producer-2.0.0.jar root@10.44.81.177:/usr/share/amq-producer/producer.jar
 ```
+    * Send SCO to sco-registrar-preprod-1
+```
+scp a.boumezbeur@10.44.64.15:/home/a.boumezbeur/sco_1.4.2_all.deb  root@sco-registrar-preprod-1:/root/
+```
 
 ## Empty /var/log/ (safe)
 
