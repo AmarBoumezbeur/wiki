@@ -15,7 +15,7 @@ Installation du seveur documentation [Gollum](http://0.0.0.0:4567/gollum/create/
 [Stuff](http://0.0.0.0:4567/gollum/create/Stuff)
 
 ### Linux
-Debian
+Debian:
 
 * Releases [Releases](http://0.0.0.0:4567/gollum/create/Releases)
 * Services [Services](http://0.0.0.0:4567/gollum/create/Services)
@@ -24,11 +24,13 @@ Debian
 
 ### APIs 
     * Messaging
-        * Provisoning
-        * Synchronous 
-            * [APIs](http://0.0.0.0:4567/gollum/create/APIs)
-        * Asynchronous
-            * [Activemq](http://0.0.0.0:4567/gollum/create/Activemq)
+
+* Provisoning
+* Synchronous 
+* [APIs](http://0.0.0.0:4567/gollum/create/APIs)
+    * Asynchronous
+* [Activemq](http://0.0.0.0:4567/gollum/create/Activemq)
+
 ### VoIP
     * [SIP](http://0.0.0.0:4567/gollum/create/SIP)
     * Tools
