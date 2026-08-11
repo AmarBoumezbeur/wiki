@@ -244,12 +244,28 @@ Content-Length: 0
 ## INFO
 1. Simple INFO
 ```text
-sipexer -info -vl 3 -co -com -sd -su -fuser 0990000335832 -fdomain sip-preprod.openvno.net -fv 'touser:phone' -cb -ap "initsys" udp:141.101.55.19:5060
+sipexer -info -vl 3 -co -com -fuser 0990000335832 -fdomain sip-preprod.openvno.net -ap "initsys" -cb -sd -su  udp:141.101.55.19:5060
 ```
 
-sipexer -m NOTIFY -sd -su udp:server.com:5060
-sipexer -m UPDATE -sd -su udp:server.com:5060
-sipexer -m PRACK -sd -su udp:server.com:5060
-sipexer -m CANCEL -sd -su udp:server.com:5060
-sipexer -m PUBLISH -sd -su udp:server.com:5060
-sipexer -m REFER -sd -su udp:server.com:5060
+## NOTIFY
+1. Simple NOTIFY
+```text
+sipexer -notify -vl 3 -co -com -fuser 0990000335832 -fdomain sip-preprod.openvno.net -ap "initsys" -cb -sd -su  udp:141.101.55.19:5060
+```
+## CANCEL
+1. Simple CANCEL
+```text
+sipexer -cancel -vl 3 -co -com -fuser 0990000335832 -fdomain sip-preprod.openvno.net -ap "initsys" -cb -sd -su  udp:141.101.55.19:5060
+```
+
+## PUBLISH
+1. Simple PUBLISH
+```text
+sipexer -publish -vl 3 -co -com -fuser 0990000335832 -fdomain sip-preprod.openvno.net -ap "initsys" -cb -sd -su  udp:141.101.55.19:5060
+```
+
+## NOTIFY
+2. Simple NOTIFY
+```text
+sipexer -notify -vl 3 -co -com -fuser 0990000335832 -fdomain sip-preprod.openvno.net -ap "initsys" -cb -sd -su  udp:141.101.55.19:5060
+```
