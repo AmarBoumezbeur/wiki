@@ -23,7 +23,7 @@ Debian:
 * Building packages [Packages](http://0.0.0.0:4567/gollum/create/Packages)
 
 ### APIs 
-    * Messaging
+Messaging:
 
 * Provisoning
 * Synchronous 
@@ -32,23 +32,24 @@ Debian:
 * [Activemq](http://0.0.0.0:4567/gollum/create/Activemq)
 
 ### VoIP
-    * [SIP](http://0.0.0.0:4567/gollum/create/SIP)
-    * Tools
-        * [SipP](http://0.0.0.0:4567/gollum/create/SipP) 
-        * [Sipexer](http://0.0.0.0:4567/gollum/create/Sipexer) 
-    * IMS
-        * MRF
-            * [ASTERISK](http://0.0.0.0:4567/gollum/create/ASTERISK)
-            * [FREESWTCH](http://0.0.0.0:4567/gollum/create/FREESWTCH)
-        * PCSCF
-            * [OPENSIPS](http://0.0.0.0:4567/gollum/create/OPENSIPS)
-                * [Build Opensips](http://0.0.0.0:4567/gollum/create/Build-Opensips)
-            * [RTPENGINE](http://0.0.0.0:4567/gollum/create/RTPENGINE)
-            * [NAT](http://0.0.0.0:4567/gollum/create/NAT)
-        * SCSCF
-        * ICSCF
-        * [HSS](http://0.0.0.0:4567/gollum/create/HSS)
-        *
+Standards:
+* [SIP](http://0.0.0.0:4567/gollum/create/SIP)
+Tools:
+* [SipP](http://0.0.0.0:4567/gollum/create/SipP) 
+* [Sipexer](http://0.0.0.0:4567/gollum/create/Sipexer) 
+IMS:
+* MRF
+    * [ASTERISK](http://0.0.0.0:4567/gollum/create/ASTERISK)
+    * [FREESWTCH](http://0.0.0.0:4567/gollum/create/FREESWTCH)
+* PCSCF
+    * [OPENSIPS](http://0.0.0.0:4567/gollum/create/OPENSIPS)
+    * [Build Opensips](http://0.0.0.0:4567/gollum/create/Build-Opensips)
+    * [RTPENGINE](http://0.0.0.0:4567/gollum/create/RTPENGINE)
+    * [NAT](http://0.0.0.0:4567/gollum/create/NAT)
+* SCSCF
+* ICSCF
+* [HSS](http://0.0.0.0:4567/gollum/create/HSS)
+
 ### Devs
     * Configurations
         * [GPG](http://0.0.0.0:4567/gollum/create/GPG)
