@@ -16,10 +16,10 @@ Installation du seveur documentation [Gollum](http://0.0.0.0:4567/gollum/create/
 
 ### Linux
 Debian
-        * Releases [Releases](http://0.0.0.0:4567/gollum/create/Releases)
-        * Services [Services](http://0.0.0.0:4567/gollum/create/Services)
-        * Repositories [Repositories](http://0.0.0.0:4567/gollum/create/Repositories)
-        * Building packages [Packages](http://0.0.0.0:4567/gollum/create/Packages)
+    * Releases [Releases](http://0.0.0.0:4567/gollum/create/Releases)
+    * Services [Services](http://0.0.0.0:4567/gollum/create/Services)
+    * Repositories [Repositories](http://0.0.0.0:4567/gollum/create/Repositories)
+    * Building packages [Packages](http://0.0.0.0:4567/gollum/create/Packages)
 ### APIs 
     * Messaging
         * Provisoning
