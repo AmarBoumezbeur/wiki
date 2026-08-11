@@ -5,12 +5,12 @@ How to create a linux .service from a script or an application that has a server
 # Configure the .service
 
 ## Script
-
-    * Let's say the script is in
+1. The script is in:
 ```text
 /opt/bin/local/myapp.sh
 ```
-    * In:
+
+2. In:
 ```text
 nano /etc/systemd/system/myapp.service
 ```
@@ -41,7 +41,8 @@ ReadWritePaths=/var/log/myapp
 [Install]
 WantedBy=multi-user.target
 ```
-    * Activate the .service
+
+3. Activate the .service
 ```text
 sudo systemctl daemon-reload
 sudo systemctl enable gollum.service
@@ -50,8 +51,7 @@ sudo systemctl status gollum.service
 ```
 
 ## Server
-
-    * Gollum for example, after installing it
+1. Gollum for example, after installing it
 ```text
 sudo tee /etc/systemd/system/gollum.service << 'EOF'
 [Unit]
@@ -71,7 +71,8 @@ RestartSec=5
 WantedBy=multi-user.target
 EOF
 ```
-    * Activate the .service
+
+2. Activate the .service
 ```text
 sudo systemctl daemon-reload
 sudo systemctl enable gollum.service
