@@ -15,8 +15,8 @@
 
 Make sure builder machine are available and configured:
 
-    * [GPG](http://0.0.0.0:4567/gollum/create/GPG)
-    * [GIT](http://0.0.0.0:4567/gollum/create/GIT)
+    * [GPG](/gollum/create/GPG)
+    * [GIT](/gollum/create/GIT)
 
 ### Mac OS
 
