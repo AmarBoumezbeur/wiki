@@ -42,20 +42,23 @@ Ce seveur est privé et il est dédié au summary de tout ce que j'ai appris pen
         * [HSS](http://0.0.0.0:4567/gollum/create/HSS)
         *
 6. Devs
+    * Configurations
+        * [GPG](http://0.0.0.0:4567/gollum/create/GPG)
+        * [GIT](http://0.0.0.0:4567/gollum/create/GIT)
     * Languages
-      * [Java](http://0.0.0.0:4567/gollum/create/Java)
-        * [Jmxterm](http://0.0.0.0:4567/gollum/create/Jmxterm)
-      * [Ruby](http://0.0.0.0:4567/gollum/create/Ruby)
-      * [Bash](http://0.0.0.0:4567/gollum/create/Bash)
-        * Scripting
-            * [Linephonecsh](http://0.0.0.0:4567/gollum/create/Linephonecsh)
-      * [Postgresql](http://0.0.0.0:4567/gollum/create/Postgresql)
-      * [Protobuff](http://0.0.0.0:4567/gollum/create/Protobuff)
+        * [Java](http://0.0.0.0:4567/gollum/create/Java)
+            * [Jmxterm](http://0.0.0.0:4567/gollum/create/Jmxterm)
+        * [Ruby](http://0.0.0.0:4567/gollum/create/Ruby)
+        * [Bash](http://0.0.0.0:4567/gollum/create/Bash)
+        * [Postgresql](http://0.0.0.0:4567/gollum/create/Postgresql)
+        * [Protobuff](http://0.0.0.0:4567/gollum/create/Protobuff)
     * Frameworks
-      * Spring-Boot [Spring](http://0.0.0.0:4567/gollum/create/Spring)
-      * Ruby on rails [Rails](http://0.0.0.0:4567/gollum/create/Rails)
+        * Spring-Boot [Spring](http://0.0.0.0:4567/gollum/create/Spring)
+        * Ruby on rails [Rails](http://0.0.0.0:4567/gollum/create/Rails)
     * Versioning
-      * [Version-Format](http://0.0.0.0:4567/gollum/create/Verion-Format)
+        * [Version-Format](http://0.0.0.0:4567/gollum/create/Verion-Format)
+    * Scripting
+        * [Linephonecsh](http://0.0.0.0:4567/gollum/create/Linephonecsh)
 7. PProd
     * 
 8. Prod
