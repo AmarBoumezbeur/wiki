@@ -6,24 +6,28 @@ Ce seveur est privé et il est dédié au summary de tout ce que j'ai appris pen
 
 ## How tos!
 
-1. Wiki 
-    * Installation du seveur documentation [Gollum](http://0.0.0.0:4567/gollum/create/Gollum)
-2. Basics
-    * [Stuff](http://0.0.0.0:4567/gollum/create/Stuff)
-3. Linux
+### Wiki 
+
+Installation du seveur documentation [Gollum](http://0.0.0.0:4567/gollum/create/Gollum)
+
+### Basics
+
+[Stuff](http://0.0.0.0:4567/gollum/create/Stuff)
+
+### Linux
     * Debian
         * Releases [Releases](http://0.0.0.0:4567/gollum/create/Releases)
         * Services [Services](http://0.0.0.0:4567/gollum/create/Services)
         * Repositories [Repositories](http://0.0.0.0:4567/gollum/create/Repositories)
         * Building packages [Packages](http://0.0.0.0:4567/gollum/create/Packages)
-4. APIs 
+### APIs 
     * Messaging
         * Provisoning
         * Synchronous 
             * [APIs](http://0.0.0.0:4567/gollum/create/APIs)
         * Asynchronous
             * [Activemq](http://0.0.0.0:4567/gollum/create/Activemq)
-5. VoIP
+### VoIP
     * [SIP](http://0.0.0.0:4567/gollum/create/SIP)
     * Tools
         * [SipP](http://0.0.0.0:4567/gollum/create/SipP) 
@@ -41,7 +45,7 @@ Ce seveur est privé et il est dédié au summary de tout ce que j'ai appris pen
         * ICSCF
         * [HSS](http://0.0.0.0:4567/gollum/create/HSS)
         *
-6. Devs
+### Devs
     * Configurations
         * [GPG](http://0.0.0.0:4567/gollum/create/GPG)
         * [GIT](http://0.0.0.0:4567/gollum/create/GIT)
@@ -59,7 +63,10 @@ Ce seveur est privé et il est dédié au summary de tout ce que j'ai appris pen
         * [Version-Format](http://0.0.0.0:4567/gollum/create/Verion-Format)
     * Scripting
         * [Linephonecsh](http://0.0.0.0:4567/gollum/create/Linephonecsh)
-7. PProd
+### PProd
     * 
-8. Prod
+### Prod
     * 
+
+### Projects
+    * [SentinelSIP](http://0.0.0.0:4567/gollum/create/SentinelSIP)
