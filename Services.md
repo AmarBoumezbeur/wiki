@@ -5,8 +5,10 @@ How to create a linux .service from a script or an application that has a server
 # Configure the .service
 
 ## Script
-    * Let's say the script is in : /opt/bin/local/myapp.sh
-    
+    * Let's say the script is in
+```text
+/opt/bin/local/myapp.sh
+```
     * In:
 ```text
 nano /etc/systemd/system/myapp.service
