@@ -35,9 +35,11 @@ Messaging:
 Standards:
 * [KPI](http://0.0.0.0:4567/gollum/create/KPI)
 * [SIP](http://0.0.0.0:4567/gollum/create/SIP)
+
 Tools:
 * [SipP](http://0.0.0.0:4567/gollum/create/SipP) 
 * [Sipexer](http://0.0.0.0:4567/gollum/create/Sipexer) 
+
 IMS:
 * MRF
     * [ASTERISK](http://0.0.0.0:4567/gollum/create/ASTERISK)
@@ -47,9 +49,11 @@ IMS:
     * [Build Opensips](http://0.0.0.0:4567/gollum/create/Build-Opensips)
     * [RTPENGINE](http://0.0.0.0:4567/gollum/create/RTPENGINE)
     * [NAT](http://0.0.0.0:4567/gollum/create/NAT)
+
 * SCSCF
+
 * ICSCF
-* [HSS](http://0.0.0.0:4567/gollum/create/HSS)
+    * [HSS](http://0.0.0.0:4567/gollum/create/HSS)
 
 ### Devs
 Configurations
