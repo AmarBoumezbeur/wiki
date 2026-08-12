@@ -22,7 +22,7 @@ Alerting + Grafana-compatible metrics export — so it slots into existing obser
 
 # Architecture 
 
-![skip](/gollum/skip_1.png)
+![skip](http://0.0.0.0:4567/gollum/skip_1.png)
 
 # Why it beats the obvious alternatives:
 
