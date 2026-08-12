@@ -24,7 +24,7 @@ Alerting + Grafana-compatible metrics export — so it slots into existing obser
 
 ![skip](/home/gollum/wiki/images/skip_1.png)
 
-![skip](http://0.0.0.0:4567/gollum/images/skip_1.png)
+![skip](http://0.0.0.0:4567/home/gollum/wiki/images/skip_1.png)
 
 <img src="/home/gollum/wiki/images/skip_1.png" alt="skip" width="600">
 
