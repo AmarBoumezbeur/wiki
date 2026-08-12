@@ -181,6 +181,12 @@ git config --list --global
 git config --global --edit
 ```
 
+### Change owner
+```text
+sudo git config --global --add safe.directory /home/aboumezbeur/Desktop/Projects/wiki
+sudo -u <service-user> git config --global --add safe.directory /home/aboumezbeur/Desktop/Projects/wiki
+```
+
 ## GPG
 
 
