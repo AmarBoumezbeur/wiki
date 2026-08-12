@@ -24,6 +24,8 @@ Alerting + Grafana-compatible metrics export — so it slots into existing obser
 
 ![skip](http://0.0.0.0:4567/gollum/skip_1.png)
 
+<img src="images/opensips-arch.png" alt="Diagram" width="600">
+
 # Why it beats the obvious alternatives:
 
 A "SIP tester" or "sipexer wrapper" app is useful but stays a personal tool, not a product — no recurring value once the test suite is written.
