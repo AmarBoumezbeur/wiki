@@ -2,7 +2,7 @@
 
 Given your day-to-day (OpenSIPS usrloc races, RTPengine SDP handling, the UDP-buffer-overflow BYE-drop bug you tracked down, zombie 481 dialogs, ActiveMQ/Grafana dashboards), the strongest idea isn't a generic "VoIP app" — it's a product built directly out of the pain you're already living with:
 
-# SentinelSIP
+# SKIP
 
 Real-time Call Health & Anomaly Detection for SIP Carriers
 
@@ -19,6 +19,9 @@ Event ingestion layer — hook into OpenSIPS event_route (E_UL_CONTACT_INSERT/UP
 Anomaly detection rules engine — start with rule-based detection (not ML) for patterns you've already diagnosed by hand: zombie dialogs stuck in 481 loops, registration storms from misbehaving endpoints (like the Alcatel OmniPCX Contact-header issue), silent BYE drops correlated with UDP socket buffer saturation.
 Live topology + call-flow visualizer — a real-time map of dialogs/registrations per SIP element, so an NOC engineer can see a stuck dialog or duplicate-407 nonce issue visually instead of grepping logs.
 Alerting + Grafana-compatible metrics export — so it slots into existing observability stacks rather than replacing them.
+
+# Architecture 
+
 
 # Why it beats the obvious alternatives:
 
