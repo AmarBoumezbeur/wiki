@@ -78,4 +78,4 @@ Scripting
 ### Prod
 
 ### Projects
-* [SentinelSIP](http://0.0.0.0:4567/gollum/create/SentinelSIP)
+* [skip](http://0.0.0.0:4567/gollum/create/skip)
