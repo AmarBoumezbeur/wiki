@@ -33,6 +33,7 @@ Messaging:
 
 ### VoIP
 Standards:
+* [KPI](http://0.0.0.0:4567/gollum/create/KPI)
 * [SIP](http://0.0.0.0:4567/gollum/create/SIP)
 Tools:
 * [SipP](http://0.0.0.0:4567/gollum/create/SipP) 
