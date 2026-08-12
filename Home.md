@@ -26,10 +26,10 @@ Debian:
 Messaging:
 
 * Provisoning
-* Synchronous 
-* [APIs](http://0.0.0.0:4567/gollum/create/APIs)
+    * Synchronous 
+        * [APIs](http://0.0.0.0:4567/gollum/create/APIs)
     * Asynchronous
-* [Activemq](http://0.0.0.0:4567/gollum/create/Activemq)
+        * [Activemq](http://0.0.0.0:4567/gollum/create/Activemq)
 
 ### VoIP
 Standards:
