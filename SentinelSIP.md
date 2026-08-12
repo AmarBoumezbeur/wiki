@@ -21,8 +21,7 @@ Live topology + call-flow visualizer — a real-time map of dialogs/registration
 Alerting + Grafana-compatible metrics export — so it slots into existing observability stacks rather than replacing them.
 
 # Architecture 
-
-![skip](/wiki/images/skip_1.png)
+![skip](/images/skip_1.png)
 
 # Why it beats the obvious alternatives:
 
