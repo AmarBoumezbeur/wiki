@@ -1,5 +1,12 @@
 # Miscellaneous
 
+## VoIP
+1. Lancer une trace SIP
+    * tcpdump
+```text
+ tcpdump -s0 -npi bond0.710 host 83.172.170.165 -w /traces/vodolis_251010145401.pcap -C100 -W60
+```
+
 ## Proc
 
 1. Search for a Proc
