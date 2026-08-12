@@ -16,20 +16,14 @@ sudo gem install gollum
 ```
 sudo gem install asciidoctor wikicloth org-ruby RedCloth github-markdown
 ```
-3. Create gollum user
-```
-# Create a dedicated user (recommended for production)
-sudo adduser --shell /bin/bash --gecos 'Gollum wiki' gollum
-sudo passwd gollum 
-# Enter new password
-sudo su - gollum
-
+3. Git configuration (if neccessary)
+```text
 # Configure Git identity
 git config --global user.name "Wiki Server"
 git config --global user.email "wiki@example.com"
 
 # Initialize the wiki repo
-mkdir ~/wiki && cd ~/wiki
+mkdir ~/Desktop/Projects/wiki && cd ~/Desktop/Projects/wiki
 git init .
 
 # Create a home page so Gollum has something to serve
@@ -40,7 +34,7 @@ exit
 ```
 4. Test run:
 ```
-sudo su - gollum -c "gollum ~/wiki --host 0.0.0.0 --port 4567"
+sudo su - aboumezbeur -c "gollum ~/Desktop/Projects/wiki --host 0.0.0.0 --port 4567"
 ```
 
 # Service
@@ -52,29 +46,29 @@ which gollum
 2. Wiki directory
 ```
 # Create the wiki directory if it doesn't exist
-sudo mkdir -p /home/gollum/wiki
+sudo mkdir -p /home/Desktop/Projects/wiki
 
 # Initialize it as a git repo
-cd /home/gollum/wiki
+cd /home/Desktop/Projects/wiki
 sudo git init .
 sudo touch Home.md
 sudo git add . && sudo git commit -m "init"
 
 # Fix ownership (replace 'gollum' with your actual username if different)
-sudo chown -R gollum:gollum /home/gollum/wiki
+sudo chown -R aboumezbeur:aboumezbeur /home/Desktop/Projects/wiki
 ```
 3. Run Gollum as a Systemd Service
 ```
 sudo tee /etc/systemd/system/gollum.service << 'EOF'
 [Unit]
-Description=Gollum wiki server
+Description=wiki
 After=network.target
 
 [Service]
 Type=simple
-User=gollum
-Group=gollum
-WorkingDirectory=/home/gollum/wiki
+User=aboumezbeur
+Group=aboumezbeur
+WorkingDirectory=/home/Desktop/Projects/wiki
 ExecStart=/usr/local/bin/gollum --host 0.0.0.0 --port 4567 --allow-uploads dir --css
 Restart=on-failure
 RestartSec=5
@@ -95,7 +89,7 @@ sudo systemctl status gollum.service
 6. Check service status
 ```
 sudo systemctl status gollum
-● gollum.service - Gollum wiki server
+● gollum.service - wiki
      Loaded: loaded (/etc/systemd/system/gollum.service; enabled; vendor preset: enabled)
      Active: active (running) since Tue 2026-08-04 13:59:55 CEST; 46s ago
    Main PID: 76522 (gollum)
