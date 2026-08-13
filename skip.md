@@ -7,8 +7,8 @@
         * [AMI](https://vicistack.com/blog/asterisk-manager-interface-guide/)
         * [AMI events](https://docs.asterisk.org/Latest_API/API_Documentation/AMI_Events/)
     * ARI
-        * [AMI](https://vicistack.com/blog/asterisk-manager-interface-guide/)
-        * [AMI events](https://docs.asterisk.org/Latest_API/API_Documentation/AMI_Events/)
+        * [ARI]()
+        * [ARI events]()
 2. Freeswitch
 3. Opensips
 4. Kamailo 
