@@ -59,6 +59,7 @@ IMS:
 Configurations
 * [GPG](http://0.0.0.0:4567/gollum/create/GPG)
 * [GIT](http://0.0.0.0:4567/gollum/create/GIT)
+
 Languages
     * [Java](http://0.0.0.0:4567/gollum/create/Java)
     * [Jmxterm](http://0.0.0.0:4567/gollum/create/Jmxterm)
@@ -66,11 +67,14 @@ Languages
     * [Bash](http://0.0.0.0:4567/gollum/create/Bash)
     * [Postgresql](http://0.0.0.0:4567/gollum/create/Postgresql)
     * [Protobuff](http://0.0.0.0:4567/gollum/create/Protobuff)
+
 Frameworks
     * Spring-Boot [Spring](http://0.0.0.0:4567/gollum/create/Spring)
     * Ruby on rails [Rails](http://0.0.0.0:4567/gollum/create/Rails)
+
 Versioning
     * [Version-Format](http://0.0.0.0:4567/gollum/create/Verion-Format)
+
 Scripting
     * [Linephonecsh](http://0.0.0.0:4567/gollum/create/Linephonecsh)
 ### PProd
