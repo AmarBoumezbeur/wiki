@@ -83,8 +83,10 @@ systemctl restart asterisk
 ```
 
 ## Watcher
+
 1. Installation
-2. Post-Installation
+
+2. Post-Installation (/etc/watcher/watcher.yaml)
 ```text
 configuration:
   check_active_timeout: 15
@@ -166,4 +168,13 @@ events:
 
 control:
   port: 8080
+```
+
+### Launch
+1. Daemon
+
+2. Manually
+```text
+cd watcher/
+ruby -Ilib bin/watcher
 ```
