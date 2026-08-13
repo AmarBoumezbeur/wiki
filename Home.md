@@ -12,18 +12,17 @@ Installation du seveur documentation [Gollum](http://0.0.0.0:4567/gollum/create/
 
 ### Basics
 
-[Stuff](http://0.0.0.0:4567/gollum/create/Stuff)
+* [Stuff](http://0.0.0.0:4567/gollum/create/Stuff)
 
 ### Linux
-Debian:
-
-* [Releases](http://0.0.0.0:4567/gollum/create/Releases)
-* [Services](http://0.0.0.0:4567/gollum/create/Services)
-* [Repositories](http://0.0.0.0:4567/gollum/create/Repositories)
-* [Packages](http://0.0.0.0:4567/gollum/create/Packages)
+* Debian:
+    * [Releases](http://0.0.0.0:4567/gollum/create/Releases)
+    * [Services](http://0.0.0.0:4567/gollum/create/Services)
+    * [Repositories](http://0.0.0.0:4567/gollum/create/Repositories)
+    * [Packages](http://0.0.0.0:4567/gollum/create/Packages)
 
 ### APIs 
-Messaging:
+* Messaging:
 
 * Provisoning
     * Synchronous 
@@ -32,13 +31,13 @@ Messaging:
         * [Activemq](http://0.0.0.0:4567/gollum/create/Activemq)
 
 ### VoIP
-Standards:
-* [KPI](http://0.0.0.0:4567/gollum/create/KPI)
-* [SIP](http://0.0.0.0:4567/gollum/create/SIP)
+* Standards:
+    * [KPI](http://0.0.0.0:4567/gollum/create/KPI)
+    * [SIP](http://0.0.0.0:4567/gollum/create/SIP)
 
-Tools:
-* [SipP](http://0.0.0.0:4567/gollum/create/SipP) 
-* [Sipexer](http://0.0.0.0:4567/gollum/create/Sipexer) 
+* Tools:
+    * [SipP](http://0.0.0.0:4567/gollum/create/SipP) 
+    * [Sipexer](http://0.0.0.0:4567/gollum/create/Sipexer) 
 
 IMS:
 * MRF
@@ -69,8 +68,8 @@ IMS:
     * [Protobuff](http://0.0.0.0:4567/gollum/create/Protobuff)
 
 * Frameworks
-    * Spring-Boot [Spring](http://0.0.0.0:4567/gollum/create/Spring)
-    * Ruby on rails [Rails](http://0.0.0.0:4567/gollum/create/Rails)
+    * [Spring](http://0.0.0.0:4567/gollum/create/Spring)
+    * [Rails](http://0.0.0.0:4567/gollum/create/Rails)
 
 * Versioning
     * [Version-Format](http://0.0.0.0:4567/gollum/create/Verion-Format)
