@@ -79,4 +79,4 @@ Scripting
 
 ### Projects
 A monitoring tool for VoIP stacks.
-* [watcher](http://0.0.0.0:4567/gollum/create/skip)
+* [watcher](http://0.0.0.0:4567/gollum/create/watcher)
