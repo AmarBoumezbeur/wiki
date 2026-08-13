@@ -1,6 +1,12 @@
 # Introduction
 
-# From Java to Ruby
+# Ruby
+
+## Create a new application
+
+[Ryby Application](https://guides.rubyonrails.org/command_line.html)
+
+## Module Vs Class
 
 ```text
 ╔═══════════════╦═══════════════════════════╦═════════════════════════════════╗
