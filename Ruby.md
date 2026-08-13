@@ -2,9 +2,19 @@
 
 # Ruby
 
+## Project structure:
+1. Application
+```text
+
+```
+
 ## Create a new application
 
-[Ryby Application](https://guides.rubyonrails.org/command_line.html)
+* Create a ruby application by hand :[Ryby Application](https://guides.rubyonrails.org/command_line.html)
+
+
+
+
 
 ## Module Vs Class
 
