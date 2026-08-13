@@ -56,11 +56,11 @@ IMS:
     * [HSS](http://0.0.0.0:4567/gollum/create/HSS)
 
 ### Devs
-Configurations
-* [GPG](http://0.0.0.0:4567/gollum/create/GPG)
-* [GIT](http://0.0.0.0:4567/gollum/create/GIT)
+* Configurations
+    * [GPG](http://0.0.0.0:4567/gollum/create/GPG)
+    * [GIT](http://0.0.0.0:4567/gollum/create/GIT)
 
-Languages
+* Languages
     * [Java](http://0.0.0.0:4567/gollum/create/Java)
     * [Jmxterm](http://0.0.0.0:4567/gollum/create/Jmxterm)
     * [Ruby](http://0.0.0.0:4567/gollum/create/Ruby)
@@ -68,15 +68,16 @@ Languages
     * [Postgresql](http://0.0.0.0:4567/gollum/create/Postgresql)
     * [Protobuff](http://0.0.0.0:4567/gollum/create/Protobuff)
 
-Frameworks
+* Frameworks
     * Spring-Boot [Spring](http://0.0.0.0:4567/gollum/create/Spring)
     * Ruby on rails [Rails](http://0.0.0.0:4567/gollum/create/Rails)
 
-Versioning
+* Versioning
     * [Version-Format](http://0.0.0.0:4567/gollum/create/Verion-Format)
 
-Scripting
+* Scripting
     * [Linephonecsh](http://0.0.0.0:4567/gollum/create/Linephonecsh)
+
 ### PProd
  
 ### Prod
