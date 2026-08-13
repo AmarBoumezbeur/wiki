@@ -93,7 +93,7 @@ configuration:
 
 core:
   address_pattern: ''
-  check_active_command: ''
+  check_active_command: '/bin/true'
 
 # Asterisk AMI
 asterisk:
@@ -177,4 +177,13 @@ control:
 ```text
 cd watcher/
 ruby -Ilib bin/watcher
+```
+
+# DEV
+
+## Testing
+### AMI
+1. REGISTER
+```text
+sipexer -register -vl 3 -co -com -ex 100 -fuser amar -fdomain sip.openvno.net -cb -ap "eiGh1oox" udp:10.44.81.209:5060
 ```
