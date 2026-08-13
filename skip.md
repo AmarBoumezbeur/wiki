@@ -180,9 +180,74 @@ ruby -Ilib bin/watcher
 ```
 
 # DEV
+## Threads
+1. The main thread
+```text
+    # Main Processing Thread
+    def start()
+      init unless @initialized
+      WATCHER::Logger.debug('Starting Watcher Processing Thread...')
+
+      while !@stop
+        begin
+          break if @stop
+
+          process_asterisk_messages
+          process_opensips_messages
+        rescue StandardError => e
+          WATCHER::Logger.fatal(e.message)
+          @stop = false
+        end
+      end
+
+    end
+```
+2. AMI Thread
+```text
+    # AMI connection Thread
+    def start()
+      return unless @last_connection.nil?
+      raise "Watcher cannot subscribe to Asterisk AMI events with #{@program_path}" unless can_connect?
+
+      WATCHER::Logger.debug("Starting AMI Connection Thread...")
+
+      @semaphore = Mutex.new # If placed inside the Thread, it creates a race condition, Mutex is synchronous
+
+      @thread = Thread.new do
+        # Asynchronous
+        # AMI uses TCP
+        while @start
+          @socket = TCPSocket.new(@ip, @port) unless @socket
+
+          @event_commands = WATCHER::AmiCommands.new(@socket) unless @event_commands
+
+          login unless @logged_in
+          begin
+            Timeout.timeout(NO_PACKET_TIMEOUT) do
+              event = @socket.readpartial(4096) # <-- the actual blocking read
+              WATCHER::Logger.debug("Received event #{event}")
+              # event = @socket.gets("\r\n\r\n")
+              @semaphore.synchronize do
+                @messages << [event.chomp, Time.now]
+              end
+              break unless @start
+            end
+
+          rescue TimeoutError
+            # Do Nothing
+          rescue StandardError => e
+            Logger.warn("AMI Connection Thread threw an error: #{e.message}")
+          end
+        end
+      rescue StandardError => e
+        WATCHER::Logger.error("Stoping AMI Connection Thread with error: #{e.message}")
+      end
+
+      # WATCHER::Logger.info('Starting AMI Connection Thread...')
+    end
+```
 
 ## Testing
-### AMI
 1. REGISTER
 ```text
 sipexer -register -vl 3 -co -com -ex 100 -fuser amar -fdomain sip.openvno.net -cb -ap "eiGh1oox" udp:10.44.81.209:5060
