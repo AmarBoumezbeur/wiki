@@ -22,6 +22,8 @@ Installation du seveur documentation [Gollum](http://0.0.0.0:4567/gollum/create/
     * [Packages](http://0.0.0.0:4567/gollum/create/Packages)
 
 ### APIs 
+* Monitoring
+    * [Graphite](http://0.0.0.0:4567/gollum/create/Graphite)
 * Messaging:
 
 * Provisoning
