@@ -50,3 +50,18 @@ Uscan semble essayer de vérifier la signature de l'archive upstream mais ne tro
 La signature est bonne d'après gpg --verify.
 
 Il faut ajouter la clé publique dans debian/upstream/signing-key.asc.
+
+
+# Asterisk-Java (AGI)
+
+```text
+To simplify for everyone what Christophe said:
+
+    1. SIGAL gets outbound_gateways from as-db or carrier_code and executes the DIAL function through asterisk (example):
+
+Sending Dialing command SIP/+33123456789@D201005050001
+
+    2. Asterisk receives the command, it looks for the peer using the peer name @D201005050001
+
+    3. Asterisk needs an IP address to communicate with the peer thus the host IP address
+```
