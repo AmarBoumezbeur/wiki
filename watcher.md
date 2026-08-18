@@ -183,66 +183,66 @@ ruby -Ilib bin/watcher
 ## Threads
 1. The main thread
 ```text
-    # Main Processing Thread
+# Main Processing Thread
     def start()
       init unless @initialized
       WATCHER::Logger.debug('Starting Watcher Processing Thread...')
 
-      while !@stop
+      # Orchestration
+      @threads << @ami.start
+      #@threads << @opensips.start
+      @threads << @graphite.start
+      @threads << @kpis.start
+
+      #@threads.each(&:join)
+
+      while @running
         begin
-          break if @stop
+          break unless @running
 
           process_asterisk_messages
           process_opensips_messages
+
         rescue StandardError => e
-          WATCHER::Logger.fatal(e.message)
-          @stop = false
+          WATCHER::Logger.fatal("Watcher Main Processing THread returned error #{e.message}")
+          @running = false
         end
       end
-
     end
 ```
 2. AMI Thread
 ```text
     # AMI connection Thread
     def start()
-      return unless @last_connection.nil?
-      raise "Watcher cannot subscribe to Asterisk AMI events with #{@program_path}" unless can_connect?
-
-      WATCHER::Logger.debug("Starting AMI Connection Thread...")
+      return unless @host && @port
 
       @semaphore = Mutex.new # If placed inside the Thread, it creates a race condition, Mutex is synchronous
 
       @thread = Thread.new do
+        WATCHER::Logger.debug("Starting AMI Connection Thread...")
         # Asynchronous
         # AMI uses TCP
-        while @start
-          @socket = TCPSocket.new(@ip, @port) unless @socket
-
-          @event_commands = WATCHER::AmiCommands.new(@socket) unless @event_commands
-
-          login unless @logged_in
+        while @running
           begin
+            raise "Watcher cannot connect to Asterisk AMI events with #{@asterisk_path}" if can_connect?
+            connect unless @socket
+
             Timeout.timeout(NO_PACKET_TIMEOUT) do
-              event = @socket.readpartial(4096) # <-- the actual blocking read
-              WATCHER::Logger.debug("Received event #{event}")
-              # event = @socket.gets("\r\n\r\n")
               @semaphore.synchronize do
-                @messages << [event.chomp, Time.now]
+                read
               end
-              break unless @start
             end
+            break unless @running
 
           rescue TimeoutError
             # Do Nothing
           rescue StandardError => e
-            Logger.warn("AMI Connection Thread threw an error: #{e.message}")
+            WATCHER::Logger.warn("AMI Connection Thread threw an error: #{e.message}")
           end
         end
       rescue StandardError => e
         WATCHER::Logger.error("Stoping AMI Connection Thread with error: #{e.message}")
       end
-
       # WATCHER::Logger.info('Starting AMI Connection Thread...')
     end
 ```
