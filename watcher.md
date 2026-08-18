@@ -105,6 +105,10 @@ asterisk:
       ip:           '127.0.0.1'
       port:         5038
       events:
+        # REGISTRY
+        - 'PeerStatus'
+        - 'ContactStatus'
+        - 'Registry'
         # CALLS
         - 'NewChannel'
         - 'NewState'
@@ -113,26 +117,22 @@ asterisk:
         - 'FullyBooted'
         - 'Reload'
         - 'Shutdown'
-        # REGISTRY
-        - 'PeerStatus'
-        - 'ContactStatus'
-        - 'Registry'
   ari:
     subscription:
       program_path: '/usr/bin/asterisk'
-      duration:     30
-      protocol:     'udp'
+      user:         'watcher'
+      protocol:     'websocket'
       ip:           '127.0.0.1'
-      port:         12345
+      port:         8088
       events:
-        # CALLS
-        - 'ChannelCreated'
-        - 'StasisStart'
-        - 'StasisEnd'
         # REGISTRY
         - 'EndpointStateChange'
         - 'ContactStatus'
         - 'PeerStatus'
+        # CALLS
+        - 'ChannelCreated'
+        - 'StasisStart'
+        - 'StasisEnd'
 
 # OpenSips Management
 opensips:
