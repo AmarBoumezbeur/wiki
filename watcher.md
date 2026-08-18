@@ -41,6 +41,7 @@
 ## Asterisk
 ### AMI
 Asterisk needs to support events through the manager module.
+
 1. manager.conf
 ```text
 ; /etc/asterisk/manager.conf
