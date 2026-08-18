@@ -39,7 +39,7 @@
 # Configuration
 
 ## Asterisk
-
+### AMI
 Asterisk needs to support events through the manager module.
 1. manager.conf
 ```text
@@ -65,6 +65,7 @@ read = system,call,log,verbose,agent,user,config,dtmf,reporting,cdr,dialplan
 write = system,call,agent,user,config,command,reporting,originate
 writetimeout = 5000
 ```
+
 2. sip.conf (for testing)
 ```text
 [amar]
@@ -76,6 +77,30 @@ context=internal
 qualify=yes
 dtmfmode=rfc2833
 callerid=33970757076
+```
+3. Restart Asterisk
+```text
+systemctl restart asterisk
+```
+
+### ARI
+1. http.conf
+```text
+[general]
+enabled = yes
+bindaddr = 0.0.0.0
+bindport = 8088
+```
+2. ari.conf (ARI users)
+```text
+[general]
+enabled = yes
+pretty = yes
+
+[watcher]
+type = user
+read_only = no
+password = watcher
 ```
 3. Restart Asterisk
 ```text
