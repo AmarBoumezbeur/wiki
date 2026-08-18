@@ -79,7 +79,14 @@ qualify=yes
 dtmfmode=rfc2833
 callerid=33970757076
 ```
-3. Restart Asterisk
+3. Add missing modules modules.conf
+```text
+load = res_stasis.so
+load = res_ari.so
+load = res_http_websocket.so
+load = res_ari_events.so
+```
+4. Restart Asterisk
 ```text
 systemctl restart asterisk
 ```
