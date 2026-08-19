@@ -29,7 +29,7 @@
 
 ## Architecture 
 
-![Watcher](images/skip.png)
+![Watcher](images/watcher.png)
 
 # Why it beats the obvious alternatives:
 
