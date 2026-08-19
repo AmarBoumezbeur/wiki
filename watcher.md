@@ -11,6 +11,8 @@
         * [ARI events]()
 2. Freeswitch
 3. Opensips
+    * Event Interface
+        * [EI](https://www.opensips.org/Documentation/Tutorials-EventInterface-1-8)
 4. Kamailo 
 
 # Watcher
