@@ -29,7 +29,7 @@
 
 ## Architecture 
 
-![skip](/home/gollum/wiki/images/skip_1.png)
+![Watcher](images/skip.png)
 
 # Why it beats the obvious alternatives:
 
