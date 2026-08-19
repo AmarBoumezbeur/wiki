@@ -125,23 +125,21 @@ configuration:
   check_active_timeout: 15
 
 core:
-  address_pattern: ''
-  check_active_command: '/bin/true'
+  address_pattern: 'none'
+  check_active_command: 'test -n "$(ip address show to 127.0.0.1)"'
 
 # Asterisk AMI
 asterisk:
+  use:              'true'
+  asterisk_path:    '/bin/true'
   ami:
-    subscription:
-      program_path: '/usr/bin/asterisk'
+    use:            'true'
+    connection:
       user:         'watcher'
       protocol:     'tcp'
-      ip:           '127.0.0.1'
+      host:         '10.44.81.209'
       port:         5038
       events:
-        # REGISTRY
-        - 'PeerStatus'
-        - 'ContactStatus'
-        - 'Registry'
         # CALLS
         - 'NewChannel'
         - 'NewState'
@@ -150,35 +148,48 @@ asterisk:
         - 'FullyBooted'
         - 'Reload'
         - 'Shutdown'
+        # REGISTRY
+        - 'PeerStatus'
+        - 'ContactStatus'
+        - 'Registry'
   ari:
-    subscription:
-      program_path: '/usr/bin/asterisk'
+    use:            'true'
+    connection:
       user:         'watcher'
       protocol:     'websocket'
-      ip:           '127.0.0.1'
+      host:         '10.44.81.209'
       port:         8088
       events:
-        # REGISTRY
-        - 'EndpointStateChange'
-        - 'ContactStatus'
-        - 'PeerStatus'
         # CALLS
         - 'ChannelCreated'
         - 'StasisStart'
         - 'StasisEnd'
+        # REGISTRY
+        - 'EndpointStateChange'
+        - 'ContactStatus'
+        - 'PeerStatus'
 
 # OpenSips Management
 opensips:
-  management:
+  use:              'true'
+  event_interface:
     subscription:
-      program_path: '/usr/sbin/opensipsctl'
-      duration:     30
+      program_path: '/bin/true'
+      duration:     60
       protocol:     'udp'
-      ip:           '127.0.0.1'
+      ip:           '10.44.81.168'
       port:         12345
       events:
         - 'ul'
         - 'drouting'
+
+# Graphite
+graphite:
+  graphite_path:    '/bin/true'
+  host:             '127.0.0.1'
+  port:             '2003'
+  prefix:           'watcher'
+  pool_interval:    '60'
 
 log:
   log_sql: false
