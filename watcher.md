@@ -14,6 +14,8 @@
     * Event Interface
         * [EI](https://www.opensips.org/Documentation/Tutorials-EventInterface-1-8)
 4. Kamailo 
+5. Graphite 
+6. PostGresql
 
 # Watcher
 
@@ -27,7 +29,11 @@
 
 ## Features:
 
-
+1. Support Asterisk AMI
+2. Support Asterisk ARI
+3. Support Opensips MI
+4. Support Graphite API
+5. Support Postgresql API
 
 ## Architecture 
 
