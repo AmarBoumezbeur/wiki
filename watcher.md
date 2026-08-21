@@ -43,9 +43,11 @@
 
 ## Logic
 
+1. 
+2.
+3.
 
 # Configuration
-
 ## Asterisk
 ### AMI
 Asterisk needs to support events through the manager module.
@@ -121,6 +123,27 @@ load = res_ari_events.so
 4. Restart Asterisk
 ```text
 systemctl restart asterisk
+```
+## OpenSIPS
+### Mi
+
+
+## Postgresql
+### watcher
+
+Postgresql database was deployed on Render.
+
+1. Project dashboard
+```text
+https://dashboard.render.com/project/prj-da45i5m1egvs73bc46sg
+```
+2. Database host
+````text
+watcher-db-1a
+```
+3. Connect to database
+```text
+psql postgresql://watcher:xBz6qMWS0NBiJiELmPrIhkez8S9PkYIb@dpg-da45i66k1f9s73ans4b0-a.frankfurt-postgres.render.com/watcher_t7rm
 ```
 
 ## Watcher
