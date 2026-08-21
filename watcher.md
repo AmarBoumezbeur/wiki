@@ -133,6 +133,11 @@ systemctl restart asterisk
 
 Postgresql database was deployed on Render.
 
+* Postregsql 18.
+* RAM 256MB
+* CPU 0.1
+* Storage 1GB
+
 1. Project dashboard
 ```text
 https://dashboard.render.com/project/prj-da45i5m1egvs73bc46sg
