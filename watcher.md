@@ -34,6 +34,7 @@
 3. Support Opensips MI
 4. Support Graphite API
 5. Support Postgresql API
+6. Support ActiveMQ API
 
 ## Architecture 
 
@@ -43,9 +44,27 @@
 
 ## Logic
 
-1. 
-2.
-3.
+###
+
+###
+
+### PostGresql
+* watcher connects to ActiveMQ and send CRUD actions to execute Potgresql commands on a Postgresql DB (18) hosted on Render blockchaine.
+* The DB saves events and KPI in tables designed specifically for that purpose.
+ * registry_events
+ * call_eventsents
+ * kpi
+
+#### registry_events
+
+```text
+
+```
+#### call_events
+
+
+#### kpi
+
 
 # Configuration
 ## Asterisk
