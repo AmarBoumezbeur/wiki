@@ -16,6 +16,7 @@
 4. Kamailo 
 5. Graphite 
 6. PostGresql
+7. ActiveMQ
 
 # Watcher
 
