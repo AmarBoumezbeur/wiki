@@ -89,10 +89,17 @@ Supported APIs:
 
 ## Technologies
 
+* Language: Ruby 3.0.2-p107
+* Framework: Gems with rspec for unitary tests.
+* TCPSockets, WebSockets and UDPSockets
+* Threads and Mutes for thread safe access
+* Queues
+* YAML for configuration file
+
 ### Pros
 
-### Cons
 
+### Cons
 
 
 ### Flows
