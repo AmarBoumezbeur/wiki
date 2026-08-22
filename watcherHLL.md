@@ -49,31 +49,34 @@
 
 ## Logic
 
-###
+### Endpoints
 
-###
+#### Asterisk
 
-### PostGresql
-* watcher connects to ActiveMQ and send CRUD actions to execute Potgresql commands on a Postgresql DB (18) hosted on Render blockchaine.
-* The DB saves events and KPI in tables designed specifically for that purpose.
+#### OpenSIPs
+
+#### Graphite
+
+#### PostGresql
+
+Watcher connects to ActiveMQ and send CRUD actions to execute Potgresql commands on a Postgresql DB (18) hosted on Render blockchaine.
+
+* The DB saves events and KPIs in tables designed specifically for that purpose.
  * registry_events
  * call_eventsents
  * kpi
 
-#### registry_events
+#### Events
 
-```text
-
-```
-#### call_events
-
-
-#### kpi
+#### KPIS
 
 
 # Configuration
+
 ## Asterisk
+
 ### AMI
+
 Asterisk needs to support events through the manager module.
 
 1. manager.conf
