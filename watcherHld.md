@@ -97,6 +97,8 @@ Supported APIs:
 * Threads and Mutes for thread safe access
 * Queues
 * YAML for configuration file
+* Watcher runs as a debian service.
+* Watcher is build into a debian package.
 
 ### Pros
 
