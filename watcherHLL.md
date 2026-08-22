@@ -151,12 +151,12 @@ load = res_ari_events.so
 ```text
 systemctl restart asterisk
 ```
+
 ## OpenSIPS
+
 ### Mi
 
-
 ## Postgresql
-### watcher
 
 Postgresql database was deployed on Render.
 
