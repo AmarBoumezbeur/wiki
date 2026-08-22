@@ -1,0 +1,358 @@
+# Introduction
+
+# References
+
+1. MRF:
+    * Asterisk
+        * AMI
+            * [AMI](https://vicistack.com/blog/asterisk-manager-interface-guide/)
+            * [AMI events](https://docs.asterisk.org/Latest_API/API_Documentation/AMI_Events/)
+        * ARI
+            * [ARI]()
+            * [ARI events]()
+    * Freeswitch
+2. PCSCF
+    * Opensips
+        * Event Interface
+            * [EI](https://www.opensips.org/Documentation/Tutorials-EventInterface-1-8)
+        * Management Interface
+            * [MI]()
+    * Kamailo 
+3. KPI
+    * Graphite 
+    * PostGresql
+4. Messaging 
+    * ActiveMQ
+
+# Watcher
+## Technologies
+
+* Watcher is built in Ruby Gems (Back-End).
+* Watcher uses Thread safe implementations to manage conenction.
+* Watcher use TCP/UDP sockets to establish connections with the respective APIs.
+* Watcher runs as a debian service.
+* Watcher is build into a debian package.
+
+## Architecture 
+
+![Watcher](images/watcher.png)
+
+## Features:
+
+1. Support Asterisk AMI
+2. Support Asterisk ARI
+3. Support Opensips MI
+4. Support Graphite API
+5. Support Postgresql API
+6. Support ActiveMQ API
+
+
+## Logic
+
+###
+
+###
+
+### PostGresql
+* watcher connects to ActiveMQ and send CRUD actions to execute Potgresql commands on a Postgresql DB (18) hosted on Render blockchaine.
+* The DB saves events and KPI in tables designed specifically for that purpose.
+ * registry_events
+ * call_eventsents
+ * kpi
+
+#### registry_events
+
+```text
+
+```
+#### call_events
+
+
+#### kpi
+
+
+# Configuration
+## Asterisk
+### AMI
+Asterisk needs to support events through the manager module.
+
+1. manager.conf
+```text
+; /etc/asterisk/manager.conf
+[general]
+enabled = yes
+port = 5038
+; ACCEPTABLE: Specific internal network interface
+; bindaddr = 10.0.0.5
+; DANGEROUS: Listen on all interfaces
+; bindaddr = 0.0.0.0
+; GOOD: Only local connections
+bindaddr = 127.0.0.1    ; IMPORTANT: Only listen on localhost by default
+displayconnects = yes
+timestampevents = yes
+
+[watcher]
+secret = watcher
+deny = 0.0.0.0/0.0.0.0 ; Deny everything first
+permit = 127.0.0.1/255.255.255.255 ; Allow localhost
+permit = 10.0.1.50/255.255.255.255 ; Allow the monitoring server
+read = system,call,log,verbose,agent,user,config,dtmf,reporting,cdr,dialplan
+write = system,call,agent,user,config,command,reporting,originate
+writetimeout = 5000
+```
+
+2. sip.conf (for testing)
+```text
+[amar]
+type=friend
+secret=eiGh1oox
+host=dynamic
+nat=yes
+context=internal
+qualify=yes
+dtmfmode=rfc2833
+callerid=33970757076
+```
+3. Restart Asterisk
+```text
+systemctl restart asterisk
+```
+
+### ARI
+1. http.conf
+```text
+[general]
+enabled = yes
+bindaddr = 0.0.0.0
+bindport = 8088
+```
+2. ari.conf (ARI users)
+```text
+[general]
+enabled = yes
+pretty = yes
+
+[watcher]
+type = user
+read_only = no
+password = watcher
+```
+3. Add missing modules modules.conf
+```text
+load = res_stasis.so
+load = res_ari.so
+load = res_http_websocket.so
+load = res_ari_events.so
+```
+4. Restart Asterisk
+```text
+systemctl restart asterisk
+```
+## OpenSIPS
+### Mi
+
+
+## Postgresql
+### watcher
+
+Postgresql database was deployed on Render.
+
+* Postregsql 18.
+* RAM 256MB
+* CPU 0.1
+* Storage 1GB
+
+1. Project dashboard
+```text
+https://dashboard.render.com/project/prj-da45i5m1egvs73bc46sg
+```
+2. Database host
+````text
+watcher-db-1a
+```
+3. Connect to database
+```text
+psql postgresql://watcher:xBz6qMWS0NBiJiELmPrIhkez8S9PkYIb@dpg-da45i66k1f9s73ans4b0-a.frankfurt-postgres.render.com/watcher_t7rm
+```
+
+## Watcher
+
+1. Installation
+
+2. Post-Installation (/etc/watcher/watcher.yaml)
+```text
+configuration:
+  check_active_timeout: 15
+
+core:
+  address_pattern: 'none'
+  check_active_command: 'test -n "$(ip address show to 127.0.0.1)"'
+
+# Asterisk AMI
+asterisk:
+  use:              'true'
+  asterisk_path:    '/bin/true'
+  ami:
+    use:            'true'
+    connection:
+      user:         'watcher'
+      protocol:     'tcp'
+      host:         '10.44.81.209'
+      port:         5038
+      events:
+        # CALLS
+        - 'NewChannel'
+        - 'NewState'
+        - 'Hangup'
+        # HEALTH
+        - 'FullyBooted'
+        - 'Reload'
+        - 'Shutdown'
+        # REGISTRY
+        - 'PeerStatus'
+        - 'ContactStatus'
+        - 'Registry'
+  ari:
+    use:            'true'
+    connection:
+      user:         'watcher'
+      protocol:     'websocket'
+      host:         '10.44.81.209'
+      port:         8088
+      events:
+        # CALLS
+        - 'ChannelCreated'
+        - 'StasisStart'
+        - 'StasisEnd'
+        # REGISTRY
+        - 'EndpointStateChange'
+        - 'ContactStatus'
+        - 'PeerStatus'
+
+# OpenSips Management
+opensips:
+  use:              'true'
+  event_interface:
+    subscription:
+      program_path: '/bin/true'
+      duration:     60
+      protocol:     'udp'
+      ip:           '10.44.81.168'
+      port:         12345
+      events:
+        - 'ul'
+        - 'drouting'
+
+# Graphite
+graphite:
+  graphite_path:    '/bin/true'
+  host:             '127.0.0.1'
+  port:             '2003'
+  prefix:           'watcher'
+  pool_interval:    '60'
+
+log:
+  log_sql: false
+  log4r:
+    loggers:
+      - name:  watcher
+        level: DEBUG
+        outputters:
+          - stdout
+
+    outputters:
+      - type: StdoutOutputter
+        name: stdout
+        formatter:
+          pattern     : '%l: %m'
+          type        : PatternFormatter
+
+events:
+  nat_flag: '6'
+
+control:
+  port: 8080
+```
+
+### Launch
+1. Daemon
+
+2. Manually
+```text
+cd watcher/
+ruby -Ilib bin/watcher
+```
+
+# DEV
+## Threads
+1. The main thread
+```text
+# Main Processing Thread
+    def start()
+      init unless @initialized
+      WATCHER::Logger.debug('Starting Watcher Processing Thread...')
+
+      # Orchestration
+      @threads << @ami.start
+      #@threads << @opensips.start
+      @threads << @graphite.start
+      @threads << @kpis.start
+
+      #@threads.each(&:join)
+
+      while @running
+        begin
+          break unless @running
+
+          process_asterisk_messages
+          process_opensips_messages
+
+        rescue StandardError => e
+          WATCHER::Logger.fatal("Watcher Main Processing THread returned error #{e.message}")
+          @running = false
+        end
+      end
+    end
+```
+2. AMI Thread
+```text
+    # AMI connection Thread
+    def start()
+      return unless @host && @port
+
+      @semaphore = Mutex.new # If placed inside the Thread, it creates a race condition, Mutex is synchronous
+
+      @thread = Thread.new do
+        WATCHER::Logger.debug("Starting AMI Connection Thread...")
+        # Asynchronous
+        # AMI uses TCP
+        while @running
+          begin
+            raise "Watcher cannot connect to Asterisk AMI events with #{@asterisk_path}" if can_connect?
+            connect unless @socket
+
+            Timeout.timeout(NO_PACKET_TIMEOUT) do
+              @semaphore.synchronize do
+                read
+              end
+            end
+            break unless @running
+
+          rescue TimeoutError
+            # Do Nothing
+          rescue StandardError => e
+            WATCHER::Logger.warn("AMI Connection Thread threw an error: #{e.message}")
+          end
+        end
+      rescue StandardError => e
+        WATCHER::Logger.error("Stoping AMI Connection Thread with error: #{e.message}")
+      end
+      # WATCHER::Logger.info('Starting AMI Connection Thread...')
+    end
+```
+
+## Testing
+1. REGISTER
+```text
+sipexer -register -vl 3 -co -com -ex 100 -fuser amar -fdomain sip.openvno.net -cb -ap "eiGh1oox" udp:10.44.81.209:5060
+```
