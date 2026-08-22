@@ -105,7 +105,10 @@ Supported APIs:
 
 
 ## Flows
+
 ### APIs
+
+![Watcher_flow_registry_call_kpi](images/Watcher_flow_registry_call_kpi.png)
 
 ### Graphite
 
