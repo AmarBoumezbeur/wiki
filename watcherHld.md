@@ -53,16 +53,32 @@ These opensource tools are based on Events. Events are part of the call logic in
 
 So, having a general tool that is able to collects these events and calculate KPIs in real time can be a huge advantage to VoIP operators and Service Providers (When opensouce is the backbone of their business model).
 
+## How it works
+
+Watcher work as a Linux/Debian daemon. Watcher is installed on a dedicated machine (physical or virtual) that is hosted by a linux system (requirements will be defined later), after the configuration of the configuration file in .yaml format where the path is in (/etc/watcher/wactcher.yaml).
+
+As simple as that.
+
+Watcher has the ability to connect to multiple APIs at once, listens to events, calculates KPIs and sends them to a monitoring system (they can also be read in the logs on INFO mode).
+
+Supported APIs:
+* Asterisk AMI over TCP
+* Asterisk ARI over WebSocket
+* OpenSIPS MI over UDP
+* OpenSIPS EI over UDP
+* Graphite over TCP
+* Postresql over TCP
+
+
+## Project Structure
+
+
 ## Technologies
-
-
-### Project Structure
 
 ### Pros
 
 ### Cons
 
-## How it works
 
 
 ### Flows
