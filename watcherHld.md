@@ -72,6 +72,20 @@ Supported APIs:
 
 ## Project Structure
 
+1. bin/
+    * In this directory, a RUBY script called watcher is the main script that starts and tops the watcher Daemon.
+2. config/
+    * In this difrectory, the user can find the watcher.yaml reference configuration file with default values.
+    * The user can also find configuration examples of the supported opensource tools.
+3. lib/
+    * In this directory, the watcher logic is coded here, where :
+        * watcher.rb: represents the main entry point of the Watcher threads logic. 
+        * endpoints/: represents the directory where API logic is coded.
+        * events/: represents the directory where events logic is coded.
+        * dispatcher/: represents the directory where the metrics dispatcher is coded.
+        * metrics/: tepresents the directory where the KPIs logic is coded.
+4. spec/
+    * In this directory, the unitary tests are coded. 
 
 ## Technologies
 
