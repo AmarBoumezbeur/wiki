@@ -29,6 +29,18 @@ The HLD is very specific about what the idea behind the WATCHER, the pros and co
 
 # Watcher
 
+## Idea
+
+The internet in full of greate tools created by greate builders, developpers and crators, but a general tool for VoIP KPIs is not really available out there, there are multiple tools that do very specific tasks but they are always limited.
+
+Watcher supports all VoIP opensource tools on the Media Resource Function (MRF) level ad the Proxy Call Session Control Function (PCSCF) level such as Asteriks and OpenSIPs respectively.
+
+These opensource tools are based on Events. Events are part of the call logic in these opensource tools, and are triggered whenever there is a new attempts of connection between the Client and the Server.
+
+So, having a general tool that is able to collects these events and calculate KPIs in real time can be a huge advantage to VoIP operators and Service Providers (When opensouce is the backbone of their business model).
+
+## Presentation
+
 Watcher is a tool written in Ruby 3.0.2-p107 and based on Gems framework. Watcher is a tool designed for VoIP stacks based on opensource technologies. Watcher calculates Key Performance Indicators (KPIs) in real time and sends them to a specific monitoring system. KPIs help improve VoIP Quality of Service by tracking SIP Registry and SIP Call events respectively.
 
 The KPIs supported by Watcher are numerous:
@@ -42,16 +54,6 @@ The KPIs supported by Watcher are numerous:
     * Call Active Count (CAC)
 
 More KPI can be added on demand.
-
-## Idea
-
-The internet in full of greate tools created by greate builders, developpers and crators, but a general tool for VoIP KPIs is not really available out there, there are multiple tools that do very specific tasks but they are always limited.
-
-Watcher supports all VoIP opensource tools on the Media Resource Function (MRF) level ad the Proxy Call Session Control Function (PCSCF) level such as Asteriks and OpenSIPs respectively.
-
-These opensource tools are based on Events. Events are part of the call logic in these opensource tools, and are triggered whenever there is a new attempts of connection between the Client and the Server.
-
-So, having a general tool that is able to collects these events and calculate KPIs in real time can be a huge advantage to VoIP operators and Service Providers (When opensouce is the backbone of their business model).
 
 ## How it works
 
@@ -102,4 +104,9 @@ Supported APIs:
 ### Cons
 
 
-### Flows
+## Flows
+### APIs
+
+### Graphite
+
+### Postresql
