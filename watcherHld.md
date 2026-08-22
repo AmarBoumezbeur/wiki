@@ -27,9 +27,7 @@ The HLD is very specific about what the idea behind the WATCHER, the pros and co
 4. Messaging 
     * ActiveMQ
 
-# Watcher
-
-## Idea
+# Idea
 
 The internet in full of greate tools created by greate builders, developpers and crators, but a general tool for VoIP KPIs is not really available out there, there are multiple tools that do very specific tasks but they are always limited.
 
@@ -39,7 +37,10 @@ These opensource tools are based on Events. Events are part of the call logic in
 
 So, having a general tool that is able to collects these events and calculate KPIs in real time can be a huge advantage to VoIP operators and Service Providers (When opensouce is the backbone of their business model).
 
-## Presentation
+# Why it beats the obvious alternatives:
+
+
+# Presentation
 
 Watcher is a tool written in Ruby 3.0.2-p107 and based on Gems framework. Watcher is a tool designed for VoIP stacks based on opensource technologies. Watcher calculates Key Performance Indicators (KPIs) in real time and sends them to a specific monitoring system. KPIs help improve VoIP Quality of Service by tracking SIP Registry and SIP Call events respectively.
 
@@ -55,7 +56,7 @@ The KPIs supported by Watcher are numerous:
 
 More KPI can be added on demand.
 
-## How it works
+# How it works
 
 Watcher work as a Linux/Debian daemon. Watcher is installed on a dedicated machine (physical or virtual) that is hosted by a linux system (requirements will be defined later), after the configuration of the configuration file in .yaml format where the path is in (/etc/watcher/wactcher.yaml).
 
@@ -72,7 +73,7 @@ Supported APIs:
 * Postresql over TCP
 
 
-## Project Structure
+# Project Structure
 
 1. bin/
     * In this directory, a RUBY script called watcher is the main script that starts and tops the watcher Daemon.
@@ -89,7 +90,7 @@ Supported APIs:
 4. spec/
     * In this directory, the unitary tests are coded. 
 
-## Technologies
+# Technologies
 
 * Language: Ruby 3.0.2-p107
 * Framework: Gems with rspec for unitary tests.
@@ -100,18 +101,20 @@ Supported APIs:
 * Watcher runs as a debian service.
 * Watcher is build into a debian package.
 
-### Pros
+## Pros
 
 
-### Cons
+## Cons
 
 
-## Flows
+# Flows
 
-### APIs
+## APIs
+
+The flow below shows how Watcher interacts with the VoIP stack and listen to events in order to calcullate KPIs.
 
 ![watcher_flow_regitry_call_kpi](images/watcher_flow_regitry_call_kpi.png)
 
-### Graphite
+## Graphite
 
 ### Postresql
