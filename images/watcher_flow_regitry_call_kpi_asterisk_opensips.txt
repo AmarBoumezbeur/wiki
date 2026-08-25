@@ -1,0 +1,44 @@
+---
+config:
+  layout: elk
+---
+sequenceDiagram
+
+    box UAC
+    participant UAC
+    end
+
+    box VoIP
+    participant Asterisk
+    participant OpenSIPs
+    end
+
+    box Watcher
+    participant Watcher
+    end
+
+    par
+    note over Watcher, OpenSIPs : Establish Connections
+    note over Watcher, OpenSIPs : Proxy Call Control Function
+    Watcher->>OpenSIPs : MI/EI/UL connection
+    OpenSIPs->>Watcher : Connection Established
+    end
+
+    par MRF
+    note over Watcher, Asterisk : Establish Connections
+    note over Watcher, Asterisk : Media Resource Function
+    Watcher->>Asterisk : AMI/ARI connection
+    Asterisk->>Watcher : Connection Established
+    end
+
+    par
+    note over UAC : SIP Method
+    UAC->>Asterisk: REGISTER or INVITE
+    Asterisk->>UAC: 2xx/3xx/4xx/5xx
+    UAC->>OpenSIPs: REGISTER or INVITE
+    OpenSIPs->>UAC: 2xx/3xx/4xx/5xx
+    end
+
+    note over Asterisk, Watcher : Events Trigger
+    Asterisk->>Watcher: Registry or Call Event
+    note over Watcher : Calculation of KPIs

@@ -1,0 +1,54 @@
+---
+config:
+  layout: elk
+---
+sequenceDiagram
+
+    box UAC
+    participant UAC
+    end
+
+    box VoIP
+    participant Asterisk
+    participant FreeSwitch
+    participant OpenSIPs
+    participant Kamailio
+    end
+
+    box Watcher
+    participant Watcher
+    end
+
+    par
+    note over Watcher, FreeSwitch : Establish Connections
+    note over Watcher, Kamailio : Proxy Call Control Function
+    Watcher->>OpenSIPs : MI/EI/UL connection
+    OpenSIPs->>Watcher : Connection Established
+    Watcher->>Kamailio : API? Connection
+    Kamailio->>Watcher : Connection Established
+    end
+
+    par MRF
+    note over Watcher, FreeSwitch : Establish Connections
+    note over Watcher, FreeSwitch : Media Resource Function
+    Watcher->>Asterisk : AMI/ARI connection
+    Asterisk->>Watcher : Connection Established
+    Watcher->>FreeSwitch :API? connection
+    FreeSwitch->>Watcher : Connection Established
+    end
+
+    par
+    note over UAC : SIP Method
+    #UAC->>Asterisk: REGISTER or INVITE
+    #Asterisk->>UAC: 2xx/3xx/4xx/5xx
+    #UAC->>FreeSwitch: REGISTER or INVITE
+    #FreeSwitch->>UAC: 2xx/3xx/4xx/5xx
+    #UAC->>OpenSIPs: REGISTER or INVITE
+    #OpenSIPs->>UAC: 2xx/3xx/4xx/5xx
+    UAC->>Kamailio: REGISTER or INVITE
+    Kamailio->>UAC: 2xx/3xx/4xx/5xx
+    end
+
+    note over Asterisk, Watcher : Events Trigger
+    Asterisk->>Watcher: Registry or Call Event
+    note over Watcher : Calculation of KPIs
