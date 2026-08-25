@@ -109,12 +109,11 @@ Supported APIs:
 
 # Flows
 
-## APIs
+## Events
 
 The flow below shows how Watcher interacts with the VoIP stack and listen to events in order to calcullate KPIs.
 
 ![watcher_flow_regitry_call_kpi](images/watcher_flow_regitry_call_kpi.png)
 
-## Graphite
+## Metrics/KPIs
 
-### Postresql
