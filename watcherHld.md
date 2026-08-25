@@ -109,11 +109,12 @@ Supported APIs:
 
 # Flows
 
-## Events
+## Events mecanism
 
 The flow below shows how Watcher interacts with the VoIP stack and listen to events in order to calcullate KPIs.
 
-![watcher_flow_regitry_call_kpi](images/watcher_flow_regitry_call_kpi.png)
+![events](images/watcher_flow_regitry_call_kpi_asterisk_opensips.png)
 
-## Metrics/KPIs
+## Events/KPIs
 
+![kpis](images/watcher_flow_regitry_call_kpi_asterisk_opensips_graphite_database.png)
