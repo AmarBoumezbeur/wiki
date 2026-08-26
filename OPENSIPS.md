@@ -91,6 +91,12 @@ su - postgres -c "psql -c \"CREATE ROLE opensips WITH LOGIN PASSWORD '9PNTuUGKVs
 opensips-cli -x database create
 ```
 
+4. Connect to the DB:
+```text
+psql -U postgres -h localhost
+psql -U opensips -h localhost
+```
+
 # Tshoot
 1. Cache
 ```text
