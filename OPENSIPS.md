@@ -9,6 +9,44 @@ This wiki is dedicated to explaining OpenSIPS. (A very fast SIP proxy server).
 3. [OpenSIPS Github](https://github.com/OpenSIPS/OpenSIPS)
 4. [Build OpenSIPS](http://0.0.0.0:4567/gollum/create/Build-OpenSIPS)
 
+# Tshoot
+1. Cache
+```text
+/usr/sbin/opensipsctl fifo cache_remove local max_rate_0990000425313
+/usr/sbin/opensipsctl fifo cache_remove local media_proxy_0990000425313
+/usr/sbin/opensipsctl fifo cache_remove local group_id_0990000425313
+/usr/sbin/opensipsctl fifo cache_remove local encryption_0990000425313
+/usr/sbin/opensipsctl fifo cache_remove local domain_0990000425313
+/usr/sbin/opensipsctl fifo cache_remove local ha1_0990000425313
+/usr/sbin/opensipsctl fifo cache_remove local ha1b_0990000425313
+/usr/sbin/opensipsctl fifo cache_remove local max_rate_0990000425313
+/usr/sbin/opensipsctl fifo cache_remove local media_proxy_0990000425313
+/usr/sbin/opensipsctl fifo cache_remove local group_id_0990000425313
+/usr/sbin/opensipsctl fifo cache_remove local encryption_0990000425313
+/usr/sbin/opensipsctl fifo cache_remove local domain_0990000425313
+/usr/sbin/opensipsctl fifo cache_remove local ha1_0990000425313
+/usr/sbin/opensipsctl fifo cache_remove local ha1b_0990000425313
+```
+
+2.
+```text
+root@pcscf-c5-1a - ~ # opensipsctl dr reload
+root@pcscf-c5-1a - ~ # opensipsctl address reload
+400 failed to reload partitip5\> 
+root@pcscf-c5-1a - ~ #
+root@pcscf-c5-1a - ~ # monit restart opensips
+root@pcscf-c5-1a - ~ # opensipsctl address reload
+ 
+exemple de compte 
+opensipsctl address show | grep 0990000425313
+498267	0	89.40.176.27	32	0	udp	pcscf-c5-4_0990000413127	REG_0990000413127
+498268	0	89.40.176.27	32	0	udp	pcscf-c5-4	REG_0990000413127
+ 
+opensipsctl address dump | grep 0990000425313
+dest::  grp=0 ip=89.40.176.27 mask=255.255.255.255 port=0 proto=udp pattern=pcscf-c5-4 context_info=REG_0990000413127
+dest::  grp=0 ip=89.40.176.27 mask=255.255.255.255 port=0 proto=udp pattern=pcscf-c5-4_0990000413127 context_info=REG_0990000413127
+root@pcscf-c5-4a ~ #
+```
 
 ***
 # PCSCF
