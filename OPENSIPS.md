@@ -7,8 +7,42 @@ This wiki is dedicated to explaining OpenSIPS. (A very fast SIP proxy server).
 1. [SIP Protocol](http://0.0.0.0:4567/gollum/create/SIP)
 2. [OpenSIPS Official Website](https://www.opensips.org/)
 3. [OpenSIPS Github](https://github.com/OpenSIPS/OpenSIPS)
-4. [OpenSIPS Installation](https://github.com/OpenSIPS/OpenSIPS-Installation)
-4. [Build OpenSIPS](http://0.0.0.0:4567/gollum/create/Build-OpenSIPS)
+4. [OpenSIPS Distributions](https://apt.opensips.org/dists/bookworm/)
+5. [Build OpenSIPS](http://0.0.0.0:4567/gollum/create/Build-OpenSIPS)
+
+# Installation
+1. Build essentials 
+```text
+sudo apt update && sudo apt upgrade -y
+sudo apt install -y gnupg2 wget curl build-essential
+```
+
+2. Check openSips version
+```text
+curl -s https://apt.opensips.org/dists/ | grep -i bookworm
+```
+
+3. Bookworm release is available
+* Install GPG key
+```text
+curl -fsSL https://apt.opensips.org/pubkey.gpg | gpg --dearmor -o /usr/share/keyrings/opensips.gpg
+```
+4. Add APT debian release and update APT
+echo "deb [signed-by=/usr/share/keyrings/opensips.gpg] https://apt.opensips.org bookworm 3.6-releases" \
+  > /etc/apt/sources.list.d/opensips.list
+
+apt update
+```
+
+5. Install Opensips
+```text
+sudo apt install -y opensips opensips-mysql-module opensips-cli
+
+```
+    - Modules
+        - SIP routing/Events/Interfaces: Opensips Core module 
+        - User authentication/Authorization: OpenSips Mysql Module
+        - CLI: OpenSips CLI module
 
 # Tshoot
 1. Cache
