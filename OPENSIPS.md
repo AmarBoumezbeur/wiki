@@ -28,6 +28,7 @@ curl -s https://apt.opensips.org/dists/ | grep -i bookworm
 ```text
 curl -fsSL https://apt.opensips.org/pubkey.gpg | gpg --dearmor -o /usr/share/keyrings/opensips.gpg
 ```
+
 4. Add APT debian release and update APT
 echo "deb [signed-by=/usr/share/keyrings/opensips.gpg] https://apt.opensips.org bookworm 3.6-releases" \
   > /etc/apt/sources.list.d/opensips.list
@@ -38,7 +39,6 @@ apt update
 5. Install Opensips
 ```text
 sudo apt install -y opensips opensips-mysql-module opensips-cli
-
 ```
     - Modules
         - SIP routing/Events/Interfaces: Opensips Core module 
@@ -46,6 +46,7 @@ sudo apt install -y opensips opensips-mysql-module opensips-cli
         - CLI: OpenSips CLI module
 
 ## Database
+
 6. Install database
 ```text
 sudo apt install -y postgresql-15 postgresql-contrib
