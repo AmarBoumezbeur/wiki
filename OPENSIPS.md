@@ -43,8 +43,26 @@ sudo apt install -y opensips opensips-mysql-module opensips-cli opensips-postgre
 ```
     - Modules
         - SIP routing/Events/Interfaces: Opensips Core module 
-        - User authentication/Authorization: OpenSips POstgresql Module and Authentication Module
+        - User authentication/Authorization: OpenSips POstgresql/Schema Module and Authentication Module
         - CLI: OpenSips CLI module
+6. Configure /etc/opensips/opensips-cli.cfg
+```text
+[default]
+log_level:            INFO
+prompt_name:          opensips-cli
+prompt_intro:         Welcome to OpenSIPS Command Line Interface!
+history_file:         ~/.opensips-cli.history
+output_type:          pretty-print
+communication_type:   fifo
+fifo_file:            /tmp/opensips_fifo
+
+database_schema_path: /usr/share/opensips
+#database_schema_path: /usr/local/share/opensips/postgres
+database_url:         postgresql://opensips:9PNTuUGKVs5DPCZ6@localhost/opensips
+database_admin_url:   postgresql://postgres@localhost
+database_name:        opensips
+database_modules:     auth_db usrloc
+```
 
 ## Database
 
