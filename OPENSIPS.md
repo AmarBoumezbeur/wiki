@@ -48,14 +48,29 @@ sudo apt install -y opensips opensips-mysql-module opensips-cli opensips-postgre
 
 ## Database
 
-6. Install database
+[Database Module](https://github.com/OpenSIPS/opensips-cli/blob/master/docs/modules/database.md#setting-up-the-database-module)
+
+1. Install postgresql
 ```text
-sudo apt install -y postgresql-15 postgresql-contrib
+sudo apt install -y postgresql-15 postgresql-contrib python3-psycopg2
 ```
 
-7. Initialize Opensips Database:
+
+2. Initialize Opensips Database:
+- Postgresql
+    - Alter postgres user role 
 ```text
-opensips-cli -x 
+sudo -u postgres psql -c "ALTER USER postgres WITH PASSWORD '9PNTuUGKVs5DPCZ6';"
+```
+    - Create postgresql user opensips (optional)
+```text
+systemctl enable --now postgresql
+su - postgres -c "psql -c \"CREATE ROLE opensips WITH LOGIN PASSWORD '9PNTuUGKVs5DPCZ6' SUPERUSER;\""
+```
+
+3. Initialize the DB (Make sure the opensips-cli.cg and postgresql schemas exists )
+```text
+opensips-cli -x database create
 ```
 
 # Tshoot
