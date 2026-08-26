@@ -39,11 +39,11 @@ apt update
 
 5. Install Opensips
 ```text
-sudo apt install -y opensips opensips-mysql-module opensips-cli
+sudo apt install -y opensips opensips-mysql-module opensips-cli opensips-postgres-module opensips-auth-modules
 ```
     - Modules
         - SIP routing/Events/Interfaces: Opensips Core module 
-        - User authentication/Authorization: OpenSips Mysql Module
+        - User authentication/Authorization: OpenSips POstgresql Module and Authentication Module
         - CLI: OpenSips CLI module
 
 ## Database
