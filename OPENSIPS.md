@@ -11,6 +11,7 @@ This wiki is dedicated to explaining OpenSIPS. (A very fast SIP proxy server).
 5. [Build OpenSIPS](http://0.0.0.0:4567/gollum/create/Build-OpenSIPS)
 
 # Installation
+## Opensips
 1. Build essentials 
 ```text
 sudo apt update && sudo apt upgrade -y
@@ -43,6 +44,17 @@ sudo apt install -y opensips opensips-mysql-module opensips-cli
         - SIP routing/Events/Interfaces: Opensips Core module 
         - User authentication/Authorization: OpenSips Mysql Module
         - CLI: OpenSips CLI module
+
+## Database
+6. Install database
+```text
+sudo apt install -y postgresql-15 postgresql-contrib
+```
+
+7. Initialize Opensips Database:
+```text
+opensips-cli -x 
+```
 
 # Tshoot
 1. Cache
