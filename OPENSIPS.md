@@ -30,6 +30,7 @@ curl -fsSL https://apt.opensips.org/pubkey.gpg | gpg --dearmor -o /usr/share/key
 ```
 
 4. Add APT debian release and update APT
+```text
 echo "deb [signed-by=/usr/share/keyrings/opensips.gpg] https://apt.opensips.org bookworm 3.6-releases" \
   > /etc/apt/sources.list.d/opensips.list
 
