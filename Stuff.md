@@ -1,6 +1,7 @@
 # Miscellaneous
 
 ## Screen
+
 1. Customize screen configuration
 ```text
 # Start message off
@@ -25,6 +26,7 @@ shell /bin/bash
 ```text
 screen -c screenrc
 ```
+
 ## Traces
 
 1. Lancer une trace SIP
