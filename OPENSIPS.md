@@ -97,6 +97,48 @@ psql -U postgres -h localhost
 psql -U opensips -h localhost
 ```
 
+## Configuration
+### Users
+#### OpenSips
+1. The module responsible for user authentication/authorization:
+    - Server side
+```text
+#### Digest authentication against the database
+loadmodule "auth.so"
+loadmodule "auth_db.so"
+modparam("auth_db", "db_url", "postgres://opensips:9PNTuUGKVs5DPCZ6@localhost/opensips")
+```
+    - Client
+```text
+#### UAC
+loadmodule "uac_auth.so"
+loadmodule "uac.so"
+# UAC restore mode is set to auto for easier From transformation between SIP and TEL URIs
+modparam("uac", "restore_mode", "auto")
+```
+
+#### Database
+1. The table where all users are going to be configured is 'subscriber'
+```text
+opensips=# \d subscriber
+                                       Table "public.subscriber"
+     Column     |         Type          | Collation | Nullable |                Default                 
+----------------+-----------------------+-----------+----------+----------------------------------------
+ id             | integer               |           | not null | nextval('subscriber_id_seq'::regclass)
+ username       | character varying(64) |           | not null | ''::character varying
+ domain         | character varying(64) |           | not null | ''::character varying
+ password       | character varying(25) |           | not null | ''::character varying
+ ha1            | character varying(64) |           | not null | ''::character varying
+ ha1_sha256     | character varying(64) |           | not null | ''::character varying
+ ha1_sha512t256 | character varying(64) |           | not null | ''::character varying
+Indexes:
+    "subscriber_pkey" PRIMARY KEY, btree (id)
+    "subscriber_account_idx" UNIQUE CONSTRAINT, btree (username, domain)
+    "subscriber_username_idx" btree (username)
+```
+
+2. 
+
 # Tshoot
 1. Cache
 ```text
