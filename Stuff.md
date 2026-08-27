@@ -1,6 +1,32 @@
 # Miscellaneous
 
-## VoIP
+## Screen
+1. Customize screen configuration
+```text
+# Start message off
+startup_message off
+
+# Status bar at bottom
+hardstatus on
+hardstatus alwayslastline
+hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %m-%d %{W}%c %{g}]'
+
+# Enable 256 colors
+term screen-256color
+
+# Scrollback buffer
+defscrollback 10000
+
+# Default shell
+shell /bin/bash
+```
+
+2. Launch screen with the custome configuration
+```text
+screen -c screenrc
+```
+## Traces
+
 1. Lancer une trace SIP
     * tcpdump
 ```text
