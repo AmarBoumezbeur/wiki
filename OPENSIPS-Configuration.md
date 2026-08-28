@@ -5,10 +5,32 @@
 1. Configuration dans opensips.cfg
 ```text
 loadmodule "domain.so"
-modparam("domain", "db_mode", 1) # Use caching
+modparam("domain", "db_url", "mysql://opensips:opensips_rw@localhost/opensips")
+modparam("domain", "db_mode", 1)   # 0 = cache only, 1 = use DB
 ```
-2. 
+2. Add route logic to validate domain
+```text
+route {
+    # Reject requests for domains we don't handle
+    if (!is_domain_local("$rd")) {
+        sl_send_reply("404", "Not Here");
+        exit;
+    }
 
+    if (is_method("REGISTER")) {
+        if (!www_authorize("$td", "subscriber")) {
+            www_challenge("$td", "0");
+            exit;
+        }
+        if (!save("location")) {
+            sl_reply_error();
+        }
+        exit;
+    }
+
+    # ... rest of routing ...
+}
+```
 
 ### Users
 #### OpenSips
