@@ -8,7 +8,17 @@ loadmodule "domain.so"
 modparam("domain", "db_url", "mysql://opensips:opensips_rw@localhost/opensips")
 modparam("domain", "db_mode", 1)   # 0 = cache only, 1 = use DB
 ```
-2. Add route logic to validate domain
+2. Check opensips syntax and restart it
+```text
+opensips -C
+systemctl restart opensips
+```
+3. Create domain
+```text
+opensips-cli -x domain add domain=amar.opensips.net
+opensips-cli -x domain show
+```
+4. Add route logic to validate domain
 ```text
 route {
     # Reject requests for domains we don't handle
