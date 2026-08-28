@@ -2,7 +2,11 @@
 
 Ce seveur est privé et il est dédié au summary de tout ce que j'ai appris pendant mes 4/5 ans chez Alphalink en tant que R&D VoIP Engineer.
 
-## Projects
+### Projects
+* WATCHER : A monitoring tool for VoIP services.
+    * [Roadman](http://0.0.0.0:4567/gollum/create/watcherRoadman)
+    * [HLD](http://0.0.0.0:4567/gollum/create/watcherHld)
+    * [LLD](http://0.0.0.0:4567/gollum/create/watcherHLL)
 
 ## How tos!
 
@@ -13,15 +17,17 @@ Installation du seveur documentation [Gollum](http://0.0.0.0:4567/gollum/create/
 ### Basics
 
 * [Stuff](http://0.0.0.0:4567/gollum/create/Stuff)
+* [Processes/Templates](http://0.0.0.0:4567/gollum/create/Processes/Templates)
 
-### Linux
-* Debian:
-    * [Releases](http://0.0.0.0:4567/gollum/create/Releases)
-    * [Services](http://0.0.0.0:4567/gollum/create/Services)
-    * [Repositories](http://0.0.0.0:4567/gollum/create/Repositories)
-    * [Packages](http://0.0.0.0:4567/gollum/create/Packages)
+### Systems
+* Linux
+    * Debian:
+        * [Releases](http://0.0.0.0:4567/gollum/create/Releases)
+        * [Services](http://0.0.0.0:4567/gollum/create/Services)
+        * [Repositories](http://0.0.0.0:4567/gollum/create/Repositories)
+        * [Packages](http://0.0.0.0:4567/gollum/create/Packages)
 
-### APIs 
+### Metrics 
 * Monitoring
     * [Graphite](http://0.0.0.0:4567/gollum/create/Graphite)
 * Messaging:
@@ -40,21 +46,20 @@ Installation du seveur documentation [Gollum](http://0.0.0.0:4567/gollum/create/
 * Tools:
     * [SipP](http://0.0.0.0:4567/gollum/create/SipP) 
     * [Sipexer](http://0.0.0.0:4567/gollum/create/Sipexer) 
+* Architectures
+    * IMS:
+        * MRF
+            * [ASTERISK](http://0.0.0.0:4567/gollum/create/ASTERISK)
+            * [FREESWTCH](http://0.0.0.0:4567/gollum/create/FREESWTCH)
+        * PCSCF
+            * [OPENSIPS](http://0.0.0.0:4567/gollum/create/OPENSIPS)
+            * [Build Opensips](http://0.0.0.0:4567/gollum/create/Build-Opensips)
+            * [RTPENGINE](http://0.0.0.0:4567/gollum/create/RTPENGINE)
+            * [NAT](http://0.0.0.0:4567/gollum/create/NAT)
 
-IMS:
-* MRF
-    * [ASTERISK](http://0.0.0.0:4567/gollum/create/ASTERISK)
-    * [FREESWTCH](http://0.0.0.0:4567/gollum/create/FREESWTCH)
-* PCSCF
-    * [OPENSIPS](http://0.0.0.0:4567/gollum/create/OPENSIPS)
-    * [Build Opensips](http://0.0.0.0:4567/gollum/create/Build-Opensips)
-    * [RTPENGINE](http://0.0.0.0:4567/gollum/create/RTPENGINE)
-    * [NAT](http://0.0.0.0:4567/gollum/create/NAT)
-
-* SCSCF
-
-* ICSCF
-    * [HSS](http://0.0.0.0:4567/gollum/create/HSS)
+    * SCSCF
+    * ICSCF
+        * [HSS](http://0.0.0.0:4567/gollum/create/HSS)
 
 ### Devs
 * Configurations
@@ -82,9 +87,3 @@ IMS:
 ### PProd
  
 ### Prod
-
-### Projects
-* WATCHER : A monitoring tool for VoIP services.
-    * [Roadman](http://0.0.0.0:4567/gollum/create/watcherRoadman)
-    * [HLD](http://0.0.0.0:4567/gollum/create/watcherHld)
-    * [LLD](http://0.0.0.0:4567/gollum/create/watcherHLL)
