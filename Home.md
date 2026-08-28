@@ -54,7 +54,7 @@ Installation du seveur documentation [Gollum](http://0.0.0.0:4567/gollum/create/
         * PCSCF
             * [OPENSIPS](http://0.0.0.0:4567/gollum/create/OPENSIPS)
                 * [Set-Up](http://0.0.0.0:4567/gollum/create/OPENSIPS-SETUP) 
-                * [Configuration](http://0.0.0.0:4567/gollum/create/OPENSIPS-SETUP) 
+                * [Configuration](http://0.0.0.0:4567/gollum/create/OPENSIPS-Configuration)
             * [RTPENGINE](http://0.0.0.0:4567/gollum/create/RTPENGINE)
             * [NAT](http://0.0.0.0:4567/gollum/create/NAT)
 
