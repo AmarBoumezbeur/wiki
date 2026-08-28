@@ -13,12 +13,7 @@ modparam("domain", "db_mode", 1)   # 0 = cache only, 1 = use DB
 opensips -C
 systemctl restart opensips
 ```
-3. Create domain
-```text
-opensips-cli -x domain add domain=amar.opensips.net
-opensips-cli -x domain show
-```
-4. Add route logic to validate domain
+3. Add route logic to validate domain
 ```text
 route {
     # Reject requests for domains we don't handle
@@ -52,7 +47,6 @@ loadmodule "auth.so"
 loadmodule "auth_db.so"
 modparam("auth_db", "db_url", "postgres://opensips:9PNTuUGKVs5DPCZ6@localhost/opensips")
 modparam("auth_db", "calculate_ha1", 1)
-
 ```
     - Client
 ```text
@@ -66,6 +60,9 @@ modparam("uac", "restore_mode", "auto")
 ## Add users
 1. Create a user
 ```text
-opensips-cli -x subscriber add username=amar password=AKzlahqscnjdsbf domain=your-domain.com
+opensips-cli -x user add username=amar password=AKzlahqscnjdsbf
 ```
-2. 
+2. Domain
+```text
+amar.opensips.net
+```
