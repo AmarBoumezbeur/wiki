@@ -108,6 +108,10 @@ loadmodule "uac.so"
 # UAC restore mode is set to auto for easier From transformation between SIP and TEL URIs
 modparam("uac", "restore_mode", "auto")
 ```
+2. Check opensips syntax
+```text
+opensips -C
+```
 
 #### Database
 1. Tables Schemas
