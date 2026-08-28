@@ -106,7 +106,9 @@ modparam("uac", "restore_mode", "auto")
 ```
 
 #### Database
-1. The table where all users are going to be configured is 'subscriber'
+1. Tables Schemas
+[Postresql Schemas](https://docs.opensips.org/manual/3-6/install-dbschema/)
+2. The table where all users are going to be configured is 'subscriber'
 ```text
 opensips=# \d subscriber
                                        Table "public.subscriber"
