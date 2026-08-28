@@ -70,8 +70,13 @@ amar.opensips.net
 
 ## REGISTER
 1. Sending the REGISTER to test 
+    * Case 1:
 ```text
 sipexer -laddr :5090 -register -vl 3 -co -com -ex 60 -fuser amar -fdomain amar.opensips.net -cb -ap "AKzlahqscnjdsbf" udp:178.170.25.243:5060
+```
+    * Case 2:
+```text
+sipexer -laddr :5090 -register -vl 3 -co -com -ex 60 -fuser 33123456789 -fdomain amar.opensips.net -cb -ap "AKzlahqscnjdsbf" udp:178.170.25.243:5060
 ```
 2. Call flow
 ```text
