@@ -37,8 +37,8 @@ route {
 }
 ```
 
-### Users
-#### OpenSips
+## Users
+### OpenSips
 1. The module responsible for user authentication/authorization:
     - Server side
 ```text
@@ -66,4 +66,10 @@ opensips-cli -x user add username=amar password=AKzlahqscnjdsbf
 2. Enter the domain when asked
 ```text
 amar.opensips.net
+```
+
+## REGISTER
+1. Sending the REGISTER to test 
+```text
+sipexer -laddr :5090 -register -vl 3 -co -com -ex 60 -fuser amar -fdomain amar.opensips.net -cb -ap "AKzlahqscnjdsbf" udp:178.170.25.243:5060
 ```
