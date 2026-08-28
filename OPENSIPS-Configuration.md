@@ -55,14 +55,15 @@ loadmodule "uac_auth.so"
 loadmodule "uac.so"
 # UAC restore mode is set to auto for easier From transformation between SIP and TEL URIs
 modparam("uac", "restore_mode", "auto")
-2. The database needs to be created
+```
+2. The database needs to be created if not alrady created
 
 ## Add users
 1. Create a user
 ```text
 opensips-cli -x user add username=amar password=AKzlahqscnjdsbf
 ```
-2. Domain
+2. Enter the domain when asked
 ```text
 amar.opensips.net
 ```
