@@ -33,7 +33,13 @@ sudo apt install -y opensips opensips-mysql-module opensips-cli opensips-postgre
         - SIP routing/Events/Interfaces: Opensips Core module 
         - User authentication/Authorization: OpenSips POstgresql/Schema Module and Authentication Module
         - CLI: OpenSips CLI module
-6. Configure /etc/opensips/opensips-cli.cfg
+6. Check if opensips is UP
+```text
+systemctl statu opensips
+````
+7. Opensips-cli 
+* [Database Module](https://github.com/OpenSIPS/opensips-cli/blob/master/docs/modules/database.md#setting-up-the-database-module)
+8. Configure /etc/opensips/opensips-cli.cfg
 ```text
 [default]
 log_level:            INFO
@@ -53,8 +59,6 @@ database_modules:     auth_db usrloc
 ```
 
 ## Database
-
-[Database Module](https://github.com/OpenSIPS/opensips-cli/blob/master/docs/modules/database.md#setting-up-the-database-module)
 
 1. Install postgresql
 ```text
