@@ -124,5 +124,3 @@ Indexes:
     "subscriber_account_idx" UNIQUE CONSTRAINT, btree (username, domain)
     "subscriber_username_idx" btree (username)
 ```
-
-2. 
