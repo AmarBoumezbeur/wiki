@@ -1,6 +1,15 @@
 # Configuration
 
 ## Pre-requisites
+### Create a domain
+1. Configuration dans opensips.cfg
+```text
+loadmodule "domain.so"
+modparam("domain", "db_mode", 1) # Use caching
+```
+2. 
+
+
 ### Users
 #### OpenSips
 1. The module responsible for user authentication/authorization:
@@ -10,6 +19,14 @@
 loadmodule "auth.so"
 loadmodule "auth_db.so"
 modparam("auth_db", "db_url", "postgres://opensips:9PNTuUGKVs5DPCZ6@localhost/opensips")
+modparam("auth_db", "calculate_ha1", no)
+modparam("auth_db", "password_column", "ha1")
+modparam("auth_db", "password_column_2", "ha1b")
+modparam("auth_db", "load_credentials", "$avp(ha1)=ha1;$avp(ha1b)=ha1b")
+modparam("auth_db", "use_domain", 1)
+modparam("auth", "username_spec", "$avp(username)")
+modparam("auth", "password_spec", "$avp(password)")
+modparam("auth", "calculate_ha1", no)
 ```
     - Client
 ```text
