@@ -71,6 +71,6 @@ To build a VoIP stack, it os important to note that it can be achieved using two
 
 ### Design
 
-![voip]()
+![voip](images/voip_stack.png)
 
 ### Functionnal design
