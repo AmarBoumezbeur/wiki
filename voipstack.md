@@ -30,24 +30,47 @@ To build a VoIP stack, it os important to note that it can be achieved using two
 ### Hardware
 
 1. Ikoula VPS
-    * Opensips : frhb103098flex.ikexpress.com
+    * Loging : 
+        * Username: boumezbeur.amar@hotmail.com
+        * Password: keepass
+    * Asterisk : frhb103098flex.ikexpress.com
         * CPU : 2 vCPUs
         * RAM : 1GB
         * STORAGE : 20 GB
         * OS : Debian 12 (Bookwork)
-    * Asterisk : frhb103099flex.ikexpress.com
+        * Networking
+            * IP :  178.170.25.229/24
+    * OpenSips : frhb103099flex.ikexpress.com
         * CPU : 2 vCPUs
         * RAM : 1GB
         * STORAGE : 20 GB
         * OS : Debian 12 (Bookwork)
-
-2. OVH (Expensive)
-3. 
-
+        * Networking
+            * IP : 178.170.25.243/24
+2. OVH (Maybe later) for HA and redanduncy.
+    * Username: boumezbeur.amar@hotmail.com
+    * Password: keepass
+    * Opensips : TOBEDEFINED
+        * CPU : 2 vCPUs
+        * RAM : 1GB
+        * STORAGE : 20 GB
+        * OS : Debian 12 (Bookwork)
+        * Networking
+            * IP :  
+    * Asterisk : TOBEDEFINED
+        * CPU : 2 vCPUs
+        * RAM : 1GB
+        * STORAGE : 20 GB
+        * OS : Debian 12 (Bookwork)
+        * Networking
+            * IP:  
 ### Software
 
+1. Linux
+2. Opensips
+2. Asterisk
+3. Sipexer
 
 # Design
-
 
 # Functionnal design
