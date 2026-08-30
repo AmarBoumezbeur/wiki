@@ -24,9 +24,6 @@ To build a VoIP stack, it os important to note that it can be achieved using two
 
 ## Solutions
 
-### Design
-
-
 ### Hardware
 
 1. Ikoula VPS
@@ -64,6 +61,7 @@ To build a VoIP stack, it os important to note that it can be achieved using two
         * OS : Debian 12 (Bookwork)
         * Networking
             * IP:  
+
 ### Software
 
 1. Linux
@@ -71,6 +69,6 @@ To build a VoIP stack, it os important to note that it can be achieved using two
 2. Asterisk
 3. Sipexer
 
-# Design
+### Design
 
-# Functionnal design
+### Functionnal design
