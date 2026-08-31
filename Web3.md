@@ -11,6 +11,7 @@ This page is dedicated to building a brand in Web3 through X plateforme.
   * Direct monetization.
 
 # The Three Pillars of a Web3 Personal Brand
+```text
 ┌─────────────────────────────────────────────────────────────┐
 │                 Web3 Brand Building Stack                   │
 ├──────────────────────────────┬──────────────────────────────┤
@@ -18,6 +19,7 @@ This page is dedicated to building a brand in Web3 through X plateforme.
 │ 2. Decentralized Social Graphs│ Farcaster (Warpcast), Lens  │
 │ 3. Direct Value Exchange     │ Paragraph, Zora, Manifold    │
 └──────────────────────────────┴──────────────────────────────┘
+```
 
 # On-Chain Identity & Verifiable Reputation
 
